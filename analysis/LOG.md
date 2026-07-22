@@ -44,6 +44,19 @@ pra track floors at the search start (1000) for most k, confirming the
 Room 1 saturation pattern. Schroeder RT60 overshoots tabulated RT by up to
 about 1.3x for the larger rooms, both tracks.
 
-### Batch agent rooms 5, 6, 9: running
-### Batch agent rooms 7, 8: running
-### Agent A (ground truth digitization): running
+### Batch agent rooms 5, 6, 9: running (room 5 result file landed)
+### Batch agent rooms 7, 8: running (room 7 result file landed)
+
+### Agent A (ground truth digitization): DONE
+tmp50 recovered from Figure 6.2 at native resolution, four panels agreeing
+within 0.5 samples; independent check against Figure 4.3.2; reconciled
+against the four reported regressions. Reconciled values (samples): 1654.8,
+1324.0, 992.3, 2645.7, 2326.4, 3087.4, 4310.8, 2867.3 for rooms 1 to 8.
+All markers sit within 3.5 samples of round-ms values (37.5, 30.0, 22.5,
+60.0, 52.8, 70.0, 97.8, 65.0), almost certainly the exact 2011 vector.
+Two thesis typos identified (Criterion I slope in Table 6.2 is 0.2090 vs
+figure 0.2019 which reproduces; Criterion II intercept 293.2 not
+reproducible, self-consistent value about 241). Criterion IV R2 is
+actually about 1.37 percent, not the reported 0.14. Room 9 tmp50 and all
+tmp95 marked missing. Notable: the thesis abstract's own minimum (37.5 ms)
+is wrong for its data, the measured minimum is Room 3 at about 22.5 ms.
