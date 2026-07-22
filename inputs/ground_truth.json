@@ -1,0 +1,551 @@
+{
+  "provenance_notes": {
+    "source": "Conaty 2011 MPhil thesis (Trinity College Dublin), inputs/FINAL_thom_conaty.pdf",
+    "room_table": "Table 4.3.1.1, thesis printed page 31 (figure on printed p.31, PDF page index 41); values verified from the native-resolution embedded table image.",
+    "room_names": "From the panel titles of Figure 4.3.1.1 (floor plans reproduced from Lindau et al. 2010), thesis printed p.31.",
+    "room_footprints": "Digitized from Figure 4.3.1.1 floor plan outlines, calibrated on the 0 and 20 m axis labels; about plus minus 0.5 m. Heights derived as V/(length*width). The thesis itself never tabulates per room dimensions.",
+    "tmp50_samples": "Digitized from Figure 6.2 (printed p.46) blue x markers; x positions matched to Table 6.1b detected samples; y read via tick-calibrated axes. Reconciled values additionally constrained by the four reported regressions (figure annotation coefficients).",
+    "tmp50_ms_fig432": "Digitized from Figure 4.3.2 (printed p.33) error bar mean dot; CI limits from serif caps."
+  },
+  "fs_hz": 44100,
+  "method_constants_2011": {
+    "hfd_kmax": 5,
+    "hmw_window_param": 50,
+    "hmw_window_samples_actual": 51,
+    "hmw_window_note": "HMW.m passes y=50 but MATLAB k(i:(i+y)) is 51 samples inclusive",
+    "smooth_span_param": 200,
+    "smooth_span_effective": 199,
+    "smooth_note": "MATLAB smooth() is a centred moving average and reduces even spans to the next lower odd span",
+    "threshold_search_start_sample": 1000,
+    "detection_rule": "first i >= 1000 with profile(i) >= threshold (FDthres.m, Appendix 9.1.1)",
+    "tail_fraction": 0.1,
+    "tail_slice": "x((length-round(length/10)):length), i.e. the last 10 percent plus one sample",
+    "criteria_thresholds": "I: tail mean; II: mean - 1 SD; III: mean - 2 SD; IV: mean - 3 SD",
+    "ism": {
+      "algorithm": "Allen and Berkley 1979 image source method, MATLAB port of the Fortran appendix (sroom.m)",
+      "fs_hz": 44100,
+      "source_xyz_text": "x = L/2, y = 2, z = 1.9 (thesis printed p.39)",
+      "receiver_xyz_text": "x = L/2, y = 1, z = 1.9 (thesis printed p.39)",
+      "gui_screenshot_discrepancy": "Figure 5.1a GUI shows source (5, 1, 1.9) and receiver (5, 2, 1.9) for a 10x10x10 example, i.e. y swapped vs the text. RIR is reciprocal under the swap.",
+      "beta_from_alpha": "conversion formula NOT stated in thesis; beta = sqrt(1 - alpha_ave) is the standard Allen-Berkley convention, unverified",
+      "rir_length_s": "UNCERTAIN. GUI default 0.256 s; Figure 5.1b plots Room 1 RIR to 0.2 s; Figure 5.3 Room 1 FD profile extends to about 17200 samples which is about RT*fs (0.39 s). Per-room length never stated."
+    }
+  },
+  "rooms": [
+    {
+      "room": 1,
+      "name": "E. Studio",
+      "name_provenance": "Figure 4.3.1.1 floor plan panel titles, thesis printed p.31",
+      "volume_m3": 216,
+      "alpha_ave": 0.36,
+      "rt_s": 0.39,
+      "room_params_provenance": "Exact from Table 4.3.1.1, thesis printed p.31",
+      "footprint_length_m": 9.6,
+      "footprint_width_m": 7.6,
+      "footprint_non_rectangular": false,
+      "height_derived_m": 2.96,
+      "footprint_provenance": "Digitized from Figure 4.3.1.1, plus minus about 0.5 m; height derived from V/(L*W), not stated in thesis",
+      "included_in_2011": true,
+      "tmp50_fig432_mean_ms": 36.3,
+      "tmp50_fig432_mean_from_dot": true,
+      "tmp50_fig432_mid_ms": 36.4,
+      "ci95_fig432_ms": [
+        26.5,
+        46.4
+      ],
+      "fig432_provenance": "Digitized from Figure 4.3.2 error bars, uncertainty about plus minus 1 ms (about 2 px)",
+      "tmp50_samples_digitized": 1656.0,
+      "tmp50_ms_digitized": 37.55,
+      "tmp50_samples_reconciled": 1654.8,
+      "tmp50_ms_reconciled": 37.52,
+      "digitized_minus_reconciled_samples": 1.2,
+      "tmp50_ms_round_hypothesis": 37.5,
+      "panel_spread_samples": 0.5,
+      "clipped_marker_panels": [],
+      "tmp50_provenance": "Digitized from Figure 6.2 (4 panels averaged, clip-biased centroids excluded); reconciled via penalized least squares against reported regressions."
+    },
+    {
+      "room": 2,
+      "name": "EN-111",
+      "name_provenance": "Figure 4.3.1.1 floor plan panel titles, thesis printed p.31",
+      "volume_m3": 224,
+      "alpha_ave": 0.26,
+      "rt_s": 0.62,
+      "room_params_provenance": "Exact from Table 4.3.1.1, thesis printed p.31",
+      "footprint_length_m": 7.1,
+      "footprint_width_m": 7.2,
+      "footprint_non_rectangular": false,
+      "height_derived_m": 4.38,
+      "footprint_provenance": "Digitized from Figure 4.3.1.1, plus minus about 0.5 m; height derived from V/(L*W), not stated in thesis",
+      "included_in_2011": true,
+      "tmp50_fig432_mean_ms": 29.4,
+      "tmp50_fig432_mean_from_dot": true,
+      "tmp50_fig432_mid_ms": 29.6,
+      "ci95_fig432_ms": [
+        22.7,
+        36.6
+      ],
+      "fig432_provenance": "Digitized from Figure 4.3.2 error bars, uncertainty about plus minus 1 ms (about 2 px)",
+      "tmp50_samples_digitized": 1325.0,
+      "tmp50_ms_digitized": 30.04,
+      "tmp50_samples_reconciled": 1324.0,
+      "tmp50_ms_reconciled": 30.02,
+      "digitized_minus_reconciled_samples": 1.0,
+      "tmp50_ms_round_hypothesis": 30.0,
+      "panel_spread_samples": 0.5,
+      "clipped_marker_panels": [
+        3
+      ],
+      "tmp50_provenance": "Digitized from Figure 6.2 (4 panels averaged, clip-biased centroids excluded); reconciled via penalized least squares against reported regressions."
+    },
+    {
+      "room": 3,
+      "name": "EN-190",
+      "name_provenance": "Figure 4.3.1.1 floor plan panel titles, thesis printed p.31",
+      "volume_m3": 182,
+      "alpha_ave": 0.17,
+      "rt_s": 0.79,
+      "room_params_provenance": "Exact from Table 4.3.1.1, thesis printed p.31",
+      "footprint_length_m": 8.6,
+      "footprint_width_m": 7.2,
+      "footprint_non_rectangular": false,
+      "height_derived_m": 2.94,
+      "footprint_provenance": "Digitized from Figure 4.3.1.1, plus minus about 0.5 m; height derived from V/(L*W), not stated in thesis",
+      "included_in_2011": true,
+      "tmp50_fig432_mean_ms": 24.7,
+      "tmp50_fig432_mean_from_dot": true,
+      "tmp50_fig432_mid_ms": 24.5,
+      "ci95_fig432_ms": [
+        15.5,
+        33.4
+      ],
+      "fig432_provenance": "Digitized from Figure 4.3.2 error bars, uncertainty about plus minus 1 ms (about 2 px)",
+      "tmp50_samples_digitized": 993.8,
+      "tmp50_ms_digitized": 22.54,
+      "tmp50_samples_reconciled": 992.3,
+      "tmp50_ms_reconciled": 22.5,
+      "digitized_minus_reconciled_samples": 1.6,
+      "tmp50_ms_round_hypothesis": 22.5,
+      "panel_spread_samples": 0.0,
+      "clipped_marker_panels": [],
+      "tmp50_provenance": "Digitized from Figure 6.2 (4 panels averaged, clip-biased centroids excluded); reconciled via penalized least squares against reported regressions."
+    },
+    {
+      "room": 4,
+      "name": "H-0104",
+      "name_provenance": "Figure 4.3.1.1 floor plan panel titles, thesis printed p.31",
+      "volume_m3": 3300,
+      "alpha_ave": 0.28,
+      "rt_s": 1.15,
+      "room_params_provenance": "Exact from Table 4.3.1.1, thesis printed p.31",
+      "footprint_length_m": 26.0,
+      "footprint_width_m": 20.7,
+      "footprint_non_rectangular": false,
+      "height_derived_m": 6.13,
+      "footprint_provenance": "Digitized from Figure 4.3.1.1, plus minus about 0.5 m; height derived from V/(L*W), not stated in thesis",
+      "included_in_2011": true,
+      "tmp50_fig432_mean_ms": 54.5,
+      "tmp50_fig432_mean_from_dot": true,
+      "tmp50_fig432_mid_ms": 54.8,
+      "ci95_fig432_ms": [
+        42.8,
+        66.8
+      ],
+      "fig432_provenance": "Digitized from Figure 4.3.2 error bars, uncertainty about plus minus 1 ms (about 2 px)",
+      "tmp50_samples_digitized": 2643.7,
+      "tmp50_ms_digitized": 59.95,
+      "tmp50_samples_reconciled": 2645.7,
+      "tmp50_ms_reconciled": 59.99,
+      "digitized_minus_reconciled_samples": -2.0,
+      "tmp50_ms_round_hypothesis": 60.0,
+      "panel_spread_samples": 0.0,
+      "clipped_marker_panels": [],
+      "tmp50_provenance": "Digitized from Figure 6.2 (4 panels averaged, clip-biased centroids excluded); reconciled via penalized least squares against reported regressions."
+    },
+    {
+      "room": 5,
+      "name": "HE-101",
+      "name_provenance": "Figure 4.3.1.1 floor plan panel titles, thesis printed p.31",
+      "volume_m3": 5179,
+      "alpha_ave": 0.23,
+      "rt_s": 1.67,
+      "room_params_provenance": "Exact from Table 4.3.1.1, thesis printed p.31",
+      "footprint_length_m": 27.2,
+      "footprint_width_m": 25.9,
+      "footprint_non_rectangular": false,
+      "height_derived_m": 7.35,
+      "footprint_provenance": "Digitized from Figure 4.3.1.1, plus minus about 0.5 m; height derived from V/(L*W), not stated in thesis",
+      "included_in_2011": true,
+      "tmp50_fig432_mean_ms": 46.4,
+      "tmp50_fig432_mean_from_dot": true,
+      "tmp50_fig432_mid_ms": 46.5,
+      "ci95_fig432_ms": [
+        36.8,
+        56.3
+      ],
+      "fig432_provenance": "Digitized from Figure 4.3.2 error bars, uncertainty about plus minus 1 ms (about 2 px)",
+      "tmp50_samples_digitized": 2328.7,
+      "tmp50_ms_digitized": 52.8,
+      "tmp50_samples_reconciled": 2326.4,
+      "tmp50_ms_reconciled": 52.75,
+      "digitized_minus_reconciled_samples": 2.3,
+      "tmp50_ms_round_hypothesis": 52.8,
+      "panel_spread_samples": 0.0,
+      "clipped_marker_panels": [],
+      "tmp50_provenance": "Digitized from Figure 6.2 (4 panels averaged, clip-biased centroids excluded); reconciled via penalized least squares against reported regressions."
+    },
+    {
+      "room": 6,
+      "name": "Teldex Studio",
+      "name_provenance": "Figure 4.3.1.1 floor plan panel titles, thesis printed p.31",
+      "volume_m3": 3647,
+      "alpha_ave": 0.2,
+      "rt_s": 1.83,
+      "room_params_provenance": "Exact from Table 4.3.1.1, thesis printed p.31",
+      "footprint_length_m": 28.3,
+      "footprint_width_m": 16.1,
+      "footprint_non_rectangular": false,
+      "height_derived_m": 8.0,
+      "footprint_provenance": "Digitized from Figure 4.3.1.1, plus minus about 0.5 m; height derived from V/(L*W), not stated in thesis",
+      "included_in_2011": true,
+      "tmp50_fig432_mean_ms": 63.9,
+      "tmp50_fig432_mean_from_dot": true,
+      "tmp50_fig432_mid_ms": 63.9,
+      "ci95_fig432_ms": [
+        48.6,
+        79.1
+      ],
+      "fig432_provenance": "Digitized from Figure 4.3.2 error bars, uncertainty about plus minus 1 ms (about 2 px)",
+      "tmp50_samples_digitized": 3086.9,
+      "tmp50_ms_digitized": 70.0,
+      "tmp50_samples_reconciled": 3087.4,
+      "tmp50_ms_reconciled": 70.01,
+      "digitized_minus_reconciled_samples": -0.5,
+      "tmp50_ms_round_hypothesis": 70.0,
+      "panel_spread_samples": 0.0,
+      "clipped_marker_panels": [],
+      "tmp50_provenance": "Digitized from Figure 6.2 (4 panels averaged, clip-biased centroids excluded); reconciled via penalized least squares against reported regressions."
+    },
+    {
+      "room": 7,
+      "name": "UoA concert hall",
+      "name_provenance": "Figure 4.3.1.1 floor plan panel titles, thesis printed p.31",
+      "volume_m3": 8298,
+      "alpha_ave": 0.33,
+      "rt_s": 1.52,
+      "room_params_provenance": "Exact from Table 4.3.1.1, thesis printed p.31",
+      "footprint_length_m": 38.2,
+      "footprint_width_m": 17.3,
+      "footprint_non_rectangular": false,
+      "height_derived_m": 12.56,
+      "footprint_provenance": "Digitized from Figure 4.3.1.1, plus minus about 0.5 m; height derived from V/(L*W), not stated in thesis",
+      "included_in_2011": true,
+      "tmp50_fig432_mean_ms": 91.2,
+      "tmp50_fig432_mean_from_dot": true,
+      "tmp50_fig432_mid_ms": 90.9,
+      "ci95_fig432_ms": [
+        57.8,
+        124.1
+      ],
+      "fig432_provenance": "Digitized from Figure 4.3.2 error bars, uncertainty about plus minus 1 ms (about 2 px)",
+      "tmp50_samples_digitized": 4309.6,
+      "tmp50_ms_digitized": 97.72,
+      "tmp50_samples_reconciled": 4310.8,
+      "tmp50_ms_reconciled": 97.75,
+      "digitized_minus_reconciled_samples": -1.2,
+      "tmp50_ms_round_hypothesis": 97.8,
+      "panel_spread_samples": 0.0,
+      "clipped_marker_panels": [],
+      "tmp50_provenance": "Digitized from Figure 6.2 (4 panels averaged, clip-biased centroids excluded); reconciled via penalized least squares against reported regressions."
+    },
+    {
+      "room": 8,
+      "name": "TUB Audimax",
+      "name_provenance": "Figure 4.3.1.1 floor plan panel titles, thesis printed p.31",
+      "volume_m3": 8500,
+      "alpha_ave": 0.23,
+      "rt_s": 2.08,
+      "room_params_provenance": "Exact from Table 4.3.1.1, thesis printed p.31",
+      "footprint_length_m": 30.1,
+      "footprint_width_m": 29.3,
+      "footprint_non_rectangular": false,
+      "height_derived_m": 9.64,
+      "footprint_provenance": "Digitized from Figure 4.3.1.1, plus minus about 0.5 m; height derived from V/(L*W), not stated in thesis",
+      "included_in_2011": true,
+      "tmp50_fig432_mean_ms": 63.4,
+      "tmp50_fig432_mean_from_dot": true,
+      "tmp50_fig432_mid_ms": 63.6,
+      "ci95_fig432_ms": [
+        40.4,
+        86.9
+      ],
+      "fig432_provenance": "Digitized from Figure 4.3.2 error bars, uncertainty about plus minus 1 ms (about 2 px)",
+      "tmp50_samples_digitized": 2868.0,
+      "tmp50_ms_digitized": 65.03,
+      "tmp50_samples_reconciled": 2867.3,
+      "tmp50_ms_reconciled": 65.02,
+      "digitized_minus_reconciled_samples": 0.7,
+      "tmp50_ms_round_hypothesis": 65.0,
+      "panel_spread_samples": 0.0,
+      "clipped_marker_panels": [],
+      "tmp50_provenance": "Digitized from Figure 6.2 (4 panels averaged, clip-biased centroids excluded); reconciled via penalized least squares against reported regressions."
+    },
+    {
+      "room": 9,
+      "name": "JC church",
+      "name_provenance": "Figure 4.3.1.1 floor plan panel titles, thesis printed p.31",
+      "volume_m3": 7417,
+      "alpha_ave": 0.23,
+      "rt_s": 2.36,
+      "room_params_provenance": "Exact from Table 4.3.1.1, thesis printed p.31",
+      "footprint_length_m": 25.8,
+      "footprint_width_m": 15.0,
+      "footprint_non_rectangular": true,
+      "height_derived_m": 19.17,
+      "footprint_provenance": "Digitized from Figure 4.3.1.1, plus minus about 0.5 m; height derived from V/(L*W), not stated in thesis",
+      "included_in_2011": false,
+      "tmp50_fig432_mean_ms": 73.7,
+      "tmp50_fig432_mean_from_dot": true,
+      "tmp50_fig432_mid_ms": 73.6,
+      "ci95_fig432_ms": [
+        51.6,
+        95.6
+      ],
+      "fig432_provenance": "Digitized from Figure 4.3.2 error bars, uncertainty about plus minus 1 ms (about 2 px)",
+      "tmp50_samples_digitized": null,
+      "tmp50_ms_digitized": null,
+      "tmp50_samples_reconciled": null,
+      "tmp50_ms_reconciled": null,
+      "tmp50_provenance": "Room 9 excluded from thesis analysis (non-shoebox); only Figure 4.3.2 ms values available."
+    }
+  ],
+  "detected_samples_2011": {
+    "criterion_1": [
+      6277,
+      4573,
+      6056,
+      13724,
+      7996,
+      12366,
+      14850,
+      16194
+    ],
+    "criterion_2": [
+      5772,
+      3197,
+      4335,
+      7027,
+      7971,
+      9486,
+      12308,
+      12571
+    ],
+    "criterion_3": [
+      3136,
+      3170,
+      2494,
+      7013,
+      7906,
+      8060,
+      11708,
+      8465
+    ],
+    "criterion_4": [
+      2053,
+      3049,
+      1567,
+      7004,
+      7661,
+      2052,
+      2192,
+      5209
+    ]
+  },
+  "tail_stats_2011_table_6_1a": {
+    "mean_fd": [
+      2.0364,
+      2.045,
+      2.025,
+      1.9833,
+      1.9782,
+      1.9866,
+      1.9682,
+      1.9644
+    ],
+    "sd_fd": [
+      0.0252,
+      0.0265,
+      0.0321,
+      0.0394,
+      0.0404,
+      0.0432,
+      0.0394,
+      0.0506
+    ]
+  },
+  "regressions_2011": {
+    "table_6_2": {
+      "criterion_1": {
+        "slope": 0.209,
+        "intercept": 331,
+        "r2_percent": 72.29
+      },
+      "criterion_2": {
+        "slope": 0.276,
+        "intercept": 293,
+        "r2_percent": 78.82
+      },
+      "criterion_3": {
+        "slope": 0.3197,
+        "intercept": 325,
+        "r2_percent": 93.49
+      },
+      "criterion_4": {
+        "slope": 0.0517,
+        "intercept": 2202,
+        "r2_percent": 0.14
+      }
+    },
+    "figure_6_2_annotations": {
+      "criterion_1": {
+        "slope": 0.2019,
+        "intercept": 330.9,
+        "r2_percent": 72.29
+      },
+      "criterion_2": {
+        "slope": 0.276,
+        "intercept": 293.2,
+        "r2_percent": 78.82
+      },
+      "criterion_3": {
+        "slope": 0.3197,
+        "intercept": 324.9,
+        "r2_percent": 93.49
+      },
+      "criterion_4": {
+        "slope": 0.05172,
+        "intercept": 2202,
+        "r2_percent": 0.14
+      }
+    },
+    "note": "Table vs figure slope disagrees for criterion I (0.2090 vs 0.2019); digitized fit decides which is correct, see regression_check in this file."
+  },
+  "regression_check_digitized": {
+    "1": {
+      "slope_fit": 0.2016603901635197,
+      "intercept_fit": 333.52357236702466,
+      "r2_fit": 0.7226037653916193,
+      "slope_reported_fig": 0.2019,
+      "intercept_reported_fig": 330.9,
+      "r2_reported": 0.7229
+    },
+    "2": {
+      "slope_fit": 0.27581750859707393,
+      "intercept_fit": 240.86806689223442,
+      "r2_fit": 0.788670783377191,
+      "slope_reported_fig": 0.276,
+      "intercept_reported_fig": 293.2,
+      "r2_reported": 0.7882
+    },
+    "3": {
+      "slope_fit": 0.31947634813974274,
+      "intercept_fit": 326.7706384793464,
+      "r2_fit": 0.9351953562214518,
+      "slope_reported_fig": 0.3197,
+      "intercept_reported_fig": 324.9,
+      "r2_reported": 0.9349
+    },
+    "4": {
+      "slope_fit": 0.05171200233181793,
+      "intercept_fit": 2202.442866325126,
+      "r2_fit": 0.013681860285153724,
+      "slope_reported_fig": 0.05172,
+      "intercept_reported_fig": 2202.0,
+      "r2_reported": 0.0014
+    }
+  },
+  "regression_after_reconciliation": {
+    "1": {
+      "slope": 0.20188097701040114,
+      "intercept": 330.90011112162136,
+      "r2": 0.7229026572920068
+    },
+    "2": {
+      "slope": 0.2759797546179791,
+      "intercept": 239.23567954416856,
+      "r2": 0.7882002162985848
+    },
+    "3": {
+      "slope": 0.3197088322115717,
+      "intercept": 324.8994334928315,
+      "r2": 0.9348979304970897
+    },
+    "4": {
+      "slope": 0.051720019777582685,
+      "intercept": 2202.050558763223,
+      "r2": 0.013661859619617522
+    }
+  },
+  "reconciliation_dropped_constraints": [
+    {
+      "criterion": 2,
+      "stat": "intercept",
+      "reason": "reported value unreproducible from any y consistent with the digitized markers; treated as thesis typo"
+    },
+    {
+      "criterion": 4,
+      "stat": "r2",
+      "reason": "reported value unreproducible from any y consistent with the digitized markers; treated as thesis typo"
+    }
+  ],
+  "round_ms_hypothesis": {
+    "note": "INFERENCE, not thesis text: every digitized Figure 6.2 marker sits within 3.5 samples (under 1 px) of these round ms values times 44.1, they reproduce the reported regressions equally well, and the 37.5 and 97.8 ms endpoints match the values quoted in the abstract.",
+    "tmp50_ms_rooms_1_to_8": [
+      37.5,
+      30.0,
+      22.5,
+      60.0,
+      52.8,
+      70.0,
+      97.8,
+      65.0
+    ],
+    "tmp50_samples_rooms_1_to_8": [
+      1653.75,
+      1323.0,
+      992.25,
+      2646.0,
+      2328.48,
+      3087.0,
+      4312.98,
+      2866.5
+    ],
+    "max_abs_diff_from_digitized_samples": 3.3817093494944857,
+    "regressions": {
+      "1": {
+        "slope": 0.20195561642099366,
+        "intercept": 330.2911314109208,
+        "r2": 0.7224928271240494
+      },
+      "2": {
+        "slope": 0.2761263096267048,
+        "intercept": 238.24406932791254,
+        "r2": 0.7880074476210946
+      },
+      "3": {
+        "slope": 0.3199667839849066,
+        "intercept": 323.3807048020159,
+        "r2": 0.935184641578593
+      },
+      "4": {
+        "slope": 0.05190410313500062,
+        "intercept": 2201.498547097841,
+        "r2": 0.013741320831560211
+      }
+    }
+  },
+  "fig53_room1_tmp_line_samples": {
+    "value": 1647.2,
+    "provenance": "Digitized vertical tmp50% marker line, Figure 5.3 (printed p.42), tick-calibrated x axis."
+  }
+}
