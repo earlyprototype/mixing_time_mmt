@@ -23,5 +23,27 @@ reference to 2.7e-15; 100k-sample profile in ~0.02 s.
 Status: running. Deliverables: src/mixtime/{rooms,ism,rt_check}.py,
 inputs/rooms_reconstruction.md, Room 1 end-to-end RT check.
 
-## Round 2 (per-room fan-out)
-Not yet launched.
+### Agent C: room reconstruction and ISM generator
+Status: DONE. Rooms digitized from Figure 4.3.1.1 floor plans; Sabine RT
+from reconstructed geometry matches tabulated RT within 1 percent for rooms
+1 to 8 (untuned), validating the proportions. Room 1 end to end: RT60 0.454 s
+vs 0.39 tabulated (expected non-diffuse ISM excess).
+
+## Round 2 (per-room fan-out, analysis/run_room.py, both RIR tracks)
+
+Main thread first ran Room 1 and found the pyroomacoustics profile saturates
+by sample ~1070 (dense sinc kernels), while a faithful Allen-Berkley port
+lands near the thesis crossings. Pre-registration Amendment 1 added the AB
+track before any regression. See results/rooms/room1.json.
+
+### Batch agent rooms 2, 3, 4: DONE
+Room 2 ab crossings 4405/4223/1829/1680 (thesis 4573/3197/3170/3049),
+room 3 ab 3498/2900/2878/1815 (thesis 6056/4335/2494/1567),
+room 4 ab 10650/8338/5237/5222 (thesis 13724/7027/7013/7004).
+pra track floors at the search start (1000) for most k, confirming the
+Room 1 saturation pattern. Schroeder RT60 overshoots tabulated RT by up to
+about 1.3x for the larger rooms, both tracks.
+
+### Batch agent rooms 5, 6, 9: running
+### Batch agent rooms 7, 8: running
+### Agent A (ground truth digitization): running
