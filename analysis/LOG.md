@@ -44,8 +44,17 @@ pra track floors at the search start (1000) for most k, confirming the
 Room 1 saturation pattern. Schroeder RT60 overshoots tabulated RT by up to
 about 1.3x for the larger rooms, both tracks.
 
-### Batch agent rooms 5, 6, 9: running (room 5 result file landed)
-### Batch agent rooms 7, 8: running (room 7 result file landed)
+### Batch agent rooms 5, 6, 9: rooms 5 delivered by agent; the container was
+recycled mid-run (3 day gap), killing rooms 6 and 9; both rerun to
+completion in the main thread with the identical deterministic script.
+### Batch agent rooms 7, 8: room 7 delivered by agent; room 8 killed by the
+same container recycle and rerun in the main thread.
+
+## Round 3 (main thread): analysis/analyze.py over rooms 1 to 8, both
+tracks. Outputs results/analysis.json, results/summary.md, figures.
+Headline: Criterion III R2 47.2 percent (pra) / 57.1 percent (ab) vs 93.49
+claimed; LOOCV 3.5 / 23.3 percent; bootstrap CIs span [4, 91] percent.
+Best-of-sweep criterion flips from III to I. See REPORT.md.
 
 ### Agent A (ground truth digitization): DONE
 tmp50 recovered from Figure 6.2 at native resolution, four panels agreeing
