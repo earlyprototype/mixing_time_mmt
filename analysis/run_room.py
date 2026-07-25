@@ -269,6 +269,8 @@ def process(room_number):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) != 2 or not sys.argv[1].isdigit():
+        sys.exit("usage: python3 analysis/run_room.py <room_number 1..9>")
     number = int(sys.argv[1])
     out, path = process(number)
     print(f"room {number} done in {out['elapsed_s']} s -> {path}")
