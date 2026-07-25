@@ -87,3 +87,13 @@ reproducible, self-consistent value about 241). Criterion IV R2 is
 actually about 1.37 percent, not the reported 0.14. Room 9 tmp50 and all
 tmp95 marked missing. Notable: the thesis abstract's own minimum (37.5 ms)
 is wrong for its data, the measured minimum is Room 3 at about 22.5 ms.
+
+## Round 4 (reverse engineering, author-requested)
+
+Search harness analysis/reverse/search_room.py; four agents (rooms 1, 3,
+5, 7) plus a main-thread background rerun for the stalled rooms 2, 4, 6,
+8. All eight rooms: no exact fingerprint match; tail statistics match to
+the fourth decimal everywhere; integer crossings never reproduced; beta
+= sqrt(1 - alpha) confirmed in all rooms; best-fit lengths 0.55 to 0.85
+of RT*fs. Synthesis in results/reverse/SYNTHESIS.md, folded into
+REPORT.md.

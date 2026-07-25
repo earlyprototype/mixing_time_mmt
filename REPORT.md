@@ -161,6 +161,27 @@ percent).
 
 ![profiles AB](results/figures/profiles_ab.png)
 
+## Reverse-engineering the 2011 inputs (exploratory diagnostic, added later)
+
+At the author's request, a per-room search (about 6000 configurations per
+room over footprint aspect, height, RIR length, beta convention and axis
+interpretation) attempted to recover the exact 2011 inputs by matching
+the thesis's printed fingerprints (Table 6.1a tail statistics, Table 6.1b
+integer crossings). Result (`results/reverse/SYNTHESIS.md`): the printed
+tail statistics are reproduced to the fourth decimal in every room,
+validating the pipeline port at the plateau, but no configuration
+reproduces the integer crossings in any room, and the misses are
+structured (compressed criterion spread) with the optimizer driven to
+implausible geometry where the pull is hardest. Conclusion: the 2011
+detections are not recoverable from the thesis document under its own
+printed algorithm; the transition region of the 2011 profiles depended
+on something unrecorded (GUI-side handling, hand-typed response lengths,
+or exact entered dimensions). Two secondary deductions did land: beta =
+sqrt(1 - alpha) is confirmed in all eight rooms, and best-fit RIR
+lengths are consistently 0.55 to 0.85 of RT times fs, suggesting
+hand-set per-room lengths. This strengthens the main verdict: the
+irreproducibility is a property of the document, not of this rerun.
+
 ## Ground truth provenance
 
 The thesis never tabulates tmp50 per room. Values were digitized

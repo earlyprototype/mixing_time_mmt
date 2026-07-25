@@ -1,0 +1,3 @@
+room 4: grid 9 ratios x 17 heights x 23 lengths x 2 beta x 2 swap
+coarse done: 6000 evals in 53 s, best score 0.9170
+done in 66 s; best score 0.5968, exact=False
