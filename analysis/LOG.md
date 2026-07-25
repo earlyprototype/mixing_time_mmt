@@ -88,7 +88,7 @@ actually about 1.37 percent, not the reported 0.14. Room 9 tmp50 and all
 tmp95 marked missing. Notable: the thesis abstract's own minimum (37.5 ms)
 is wrong for its data, the measured minimum is Room 3 at about 22.5 ms.
 
-## Round 4 (reverse engineering, author-requested)
+## Round 5 (reverse engineering, author-requested)
 
 Search harness analysis/reverse/search_room.py; four agents (rooms 1, 3,
 5, 7) plus a main-thread background rerun for the stalled rooms 2, 4, 6,
