@@ -227,6 +227,11 @@
       "intercept": 331,
       "r2_percent": 72.29
      },
+     "thesis_regression_corrected": {
+      "slope": 0.2019,
+      "intercept": 330.9,
+      "r2_percent": 72.29
+     },
      "corr_with_thesis_samples": 0.8959021935123619
     },
     "II": {
@@ -259,6 +264,11 @@
       "intercept": 293,
       "r2_percent": 78.82
      },
+     "thesis_regression_corrected": {
+      "slope": 0.276,
+      "intercept": 241,
+      "r2_percent": 78.82
+     },
      "corr_with_thesis_samples": 0.9148735485818703
     },
     "III": {
@@ -287,6 +297,11 @@
      "intercept": 1228.2596813741404,
      "r2": 0.4722119861763162,
      "thesis_regression": {
+      "slope": 0.3197,
+      "intercept": 325,
+      "r2_percent": 93.49
+     },
+     "thesis_regression_corrected": {
       "slope": 0.3197,
       "intercept": 325,
       "r2_percent": 93.49
@@ -322,6 +337,11 @@
       "slope": 0.0517,
       "intercept": 2202,
       "r2_percent": 0.14
+     },
+     "thesis_regression_corrected": {
+      "slope": 0.0517,
+      "intercept": 2202,
+      "r2_percent": 1.37
      },
      "corr_with_thesis_samples": -0.009003895326888653
     }
@@ -760,6 +780,11 @@
       "intercept": 331,
       "r2_percent": 72.29
      },
+     "thesis_regression_corrected": {
+      "slope": 0.2019,
+      "intercept": 330.9,
+      "r2_percent": 72.29
+     },
      "corr_with_thesis_samples": 0.8636879594018728
     },
     "II": {
@@ -792,6 +817,11 @@
       "intercept": 293,
       "r2_percent": 78.82
      },
+     "thesis_regression_corrected": {
+      "slope": 0.276,
+      "intercept": 241,
+      "r2_percent": 78.82
+     },
      "corr_with_thesis_samples": 0.6922824977725063
     },
     "III": {
@@ -820,6 +850,11 @@
      "intercept": 620.1123032832261,
      "r2": 0.5711246511211339,
      "thesis_regression": {
+      "slope": 0.3197,
+      "intercept": 325,
+      "r2_percent": 93.49
+     },
+     "thesis_regression_corrected": {
       "slope": 0.3197,
       "intercept": 325,
       "r2_percent": 93.49
@@ -855,6 +890,11 @@
       "slope": 0.0517,
       "intercept": 2202,
       "r2_percent": 0.14
+     },
+     "thesis_regression_corrected": {
+      "slope": 0.0517,
+      "intercept": 2202,
+      "r2_percent": 1.37
      },
      "corr_with_thesis_samples": 0.5906369103444714
     }

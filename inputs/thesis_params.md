@@ -200,7 +200,7 @@ pp.53 to 56, PAGES 64 to 67) unless noted.
 |---|---|---|---|---|---|---|
 | 1 | 2.0364 | 0.0252 | 2.0364 | 2.0112 | 1.9860 | 1.9608 |
 | 2 | 2.0450 | 0.0265 | 2.0450 | 2.0185 | 1.9921 | 1.9656 |
-| 3 | 2.0250 | 0.0321 | 2.0250 | 1.9927 | 1.9605 | 1.9284 |
+| 3 | 2.0250 | 0.0321 | 2.0250 | 1.9929* | 1.9608* | 1.9287* |
 | 4 | 1.9833 | 0.0394 | 1.9833 | 1.9439 | 1.9046 | 1.8652 |
 | 5 | 1.9782 | 0.0404 | 1.9782 | 1.9377 | 1.8973 | 1.8569 |
 | 6 | 1.9866 | 0.0432 | 1.9866 | 1.9435 | 1.9003 | 1.8571 |
@@ -210,13 +210,12 @@ pp.53 to 56, PAGES 64 to 67) unless noted.
 (Thesis table prints Thr III for Room 1 as "1.986" and Thr I equals the
 mean by definition.)
 
-Note on Room 3: the row above is a faithful transcription of the thesis's
-Table 6.1a, but it is internally inconsistent in the thesis itself. From
-the printed mean 2.0250 and SD 0.0321 the thresholds would be 1.9929,
-1.9608 and 1.9287; the thesis prints 1.9927, 1.9605 and 1.9284, a uniform
-0.0003 offset consistent with an unrounded mean near 2.0247. The "exact"
-tag on this section refers to the transcription, not to the internal
-consistency of the source. We do not alter the published values.
+*Room 3 corrected per inputs/CORRECTIONS.md C4: the thesis prints 1.9927,
+1.9605 and 1.9284, which are internally inconsistent with its own printed
+mean 2.0250 and SD 0.0321 (uniform 0.0003 deficit, consistent with an
+unrounded mean near 2.0247). The corrected values above are what the
+stated definition produces from the stated inputs; the printed originals
+are preserved in the corrections log. No computation consumes this row.
 
 ### 4.2 Table 6.1b: detected sample numbers (printed p.44, PAGE 55; exact)
 
@@ -235,6 +234,18 @@ consistent one and 4571 is a typo.)
 ### 4.3 Regressions, tmp50% (samples) against detected sample number
 
 Table 6.2 (printed p.46, PAGE 57; exact transcription):
+
+Operative (corrected) targets, see inputs/CORRECTIONS.md C1 to C3 for the
+printed originals and evidence:
+
+| Criterion | equation (corrected where flagged) | R2 |
+|---|---|---|
+| I | tmp50% = 0.2019 * I + 330.9 (C1) | 72.29 percent |
+| II | tmp50% = 0.2760 * II + 241 (C2) | 78.82 percent |
+| III | tmp50% = 0.3197 * III + 325 | 93.49 percent |
+| IV | tmp50% = 0.0517 * IV + 2202 | 1.37 percent (C3) |
+
+As printed in thesis Table 6.2 (kept for the record):
 
 | Criterion | equation | R2 |
 |---|---|---|

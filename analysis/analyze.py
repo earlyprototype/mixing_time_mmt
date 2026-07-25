@@ -32,11 +32,20 @@ THESIS = {
         "III": [3136, 3170, 2494, 7013, 7906, 8060, 11708, 8465],
         "IV": [2053, 3049, 1567, 7004, 7661, 2052, 2192, 5209],
     },
-    "regressions": {  # Table 6.2: slope, intercept, R2 percent
+    "regressions": {  # Table 6.2 as printed: slope, intercept, R2 percent
         "I": (0.2090, 331, 72.29),
         "II": (0.2760, 293, 78.82),
         "III": (0.3197, 325, 93.49),
         "IV": (0.0517, 2202, 0.14),
+    },
+    # Operative corrected targets per inputs/CORRECTIONS.md C1 to C3
+    # (Criterion I slope from the figure annotation, Criterion II intercept
+    # self-consistent value, Criterion IV R2 recomputed).
+    "regressions_corrected": {
+        "I": (0.2019, 330.9, 72.29),
+        "II": (0.2760, 241, 78.82),
+        "III": (0.3197, 325, 93.49),
+        "IV": (0.0517, 2202, 1.37),
     },
 }
 CRIT_K = {"I": "0.0", "II": "1.0", "III": "2.0", "IV": "3.0"}
@@ -173,6 +182,9 @@ def main():
                 ts, tb, tr2 = THESIS["regressions"][crit]
                 entry["thesis_regression"] = {"slope": ts, "intercept": tb,
                                               "r2_percent": tr2}
+                cs, cb, cr2 = THESIS["regressions_corrected"][crit]
+                entry["thesis_regression_corrected"] = {
+                    "slope": cs, "intercept": cb, "r2_percent": cr2}
                 # Correlation of our detected samples with the thesis's.
                 tvals = np.array([THESIS["samples"][crit][i] for i in ok],
                                  float)
@@ -371,13 +383,15 @@ def write_summary(out):
                      f"[{b['slope_ci'][0]:.4f}, {b['slope_ci'][1]:.4f}]\n")
             L.append(f"With raw digitized ground truth: R2 = "
                      f"{p['digitized_gt_r2']*100:.2f}%\n")
-        L.append("\nCriteria vs 2011:\n\n")
+        L.append("\nCriteria vs 2011 (2011 values are the corrected "
+                 "targets per inputs/CORRECTIONS.md; printed originals in "
+                 "results/analysis.json):\n\n")
         L.append("| Crit | our R2 | 2011 R2 | our slope | 2011 slope | "
                  "corr(our x, 2011 x) |\n|---|---|---|---|---|---|\n")
         for crit in ("I", "II", "III", "IV"):
             e = T["criteria"][crit]
             if "r2" in e:
-                tr = e["thesis_regression"]
+                tr = e["thesis_regression_corrected"]
                 L.append(f"| {crit} | {e['r2']*100:.2f}% | "
                          f"{tr['r2_percent']}% | {e['slope']:.4f} | "
                          f"{tr['slope']} | "

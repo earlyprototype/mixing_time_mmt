@@ -15,14 +15,14 @@ LOOCV: R2 = 3.52%, RMSE = 22.42 ms
 Bootstrap 95% CI: R2 [4.3, 88.9]%, slope [0.1067, 1.1096]
 With raw digitized ground truth: R2 = 47.31%
 
-Criteria vs 2011:
+Criteria vs 2011 (2011 values are the corrected targets per inputs/CORRECTIONS.md; printed originals in results/analysis.json):
 
 | Crit | our R2 | 2011 R2 | our slope | 2011 slope | corr(our x, 2011 x) |
 |---|---|---|---|---|---|
-| I | 69.02% | 72.29% | 0.6488 | 0.209 | 0.896 |
+| I | 69.02% | 72.29% | 0.6488 | 0.2019 | 0.896 |
 | II | 55.38% | 78.82% | 0.5201 | 0.276 | 0.915 |
 | III | 47.22% | 93.49% | 0.5611 | 0.3197 | 0.802 |
-| IV | 56.30% | 0.14% | 0.6568 | 0.0517 | -0.009 |
+| IV | 56.30% | 1.37% | 0.6568 | 0.0517 | -0.009 |
 
 Sensitivity (Criterion III R2 under one-factor changes):
 
@@ -52,14 +52,14 @@ LOOCV: R2 = 23.28%, RMSE = 19.99 ms
 Bootstrap 95% CI: R2 [6.0, 91.3]%, slope [0.0756, 0.5719]
 With raw digitized ground truth: R2 = 57.17%
 
-Criteria vs 2011:
+Criteria vs 2011 (2011 values are the corrected targets per inputs/CORRECTIONS.md; printed originals in results/analysis.json):
 
 | Crit | our R2 | 2011 R2 | our slope | 2011 slope | corr(our x, 2011 x) |
 |---|---|---|---|---|---|
-| I | 82.29% | 72.29% | 0.2444 | 0.209 | 0.864 |
+| I | 82.29% | 72.29% | 0.2444 | 0.2019 | 0.864 |
 | II | 58.29% | 78.82% | 0.3210 | 0.276 | 0.692 |
 | III | 57.11% | 93.49% | 0.3546 | 0.3197 | 0.840 |
-| IV | 59.97% | 0.14% | 0.3235 | 0.0517 | 0.591 |
+| IV | 59.97% | 1.37% | 0.3235 | 0.0517 | 0.591 |
 
 Sensitivity (Criterion III R2 under one-factor changes):
 

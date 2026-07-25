@@ -92,12 +92,14 @@ Named criteria versus 2011 (AB track):
 | I (k=0) | 82.3 % | 72.29 % |
 | II (k=1) | 58.3 % | 78.82 % |
 | III (k=2) | 57.1 % | 93.49 % |
-| IV (k=3) | 60.0 % | 0.14 %* |
+| IV (k=3) | 60.0 % | 1.37 % (corrected) |
 
-*Agent-recomputed from the thesis's own numbers, the reported 0.14 percent
-is not reproducible from its own data; the self-consistent value is about
-1.4 percent. Two further typos in the thesis's regression table were found
-and documented in `inputs/thesis_params.md`.
+The 2011 Criterion IV value is the corrected one: the thesis prints 0.14
+percent, which is not reproducible from its own data. This and every other
+place where we override the printed thesis (a slope typo, an intercept
+typo, one internally inconsistent table row, a text/table mismatch, the
+abstract's range claim) are itemized with evidence in
+`inputs/CORRECTIONS.md`; printed originals are always preserved there.
 
 ## Sensitivity to the arbitrary constants
 
@@ -184,9 +186,11 @@ thesis abstract's "37.5 to 97.8 ms" range misstates its own data's minimum
   to about 1.3x for large rooms** (non-diffuse uniform-absorption shoebox
   ISM, both tracks; expected physics, recorded per room in
   `results/rooms/`).
-- **Thesis-internal inconsistencies** (regression-table typos, GUI versus
-  text source/receiver swap, text 4571 versus table 4573) are catalogued
-  in `inputs/thesis_params.md`; none affect the conclusions.
+- **Thesis-internal inconsistencies** are corrected where the evidence is
+  decisive, with every override logged in `inputs/CORRECTIONS.md`
+  (printed original, corrected value, evidence); the GUI versus text
+  source/receiver swap is left as-is (reciprocal, no correction needed).
+  None of the corrections affect the conclusions.
 
 ## Reproduce this
 
