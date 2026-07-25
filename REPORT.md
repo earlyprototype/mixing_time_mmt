@@ -130,6 +130,20 @@ Same windowing and detection on the pyroomacoustics RIRs: sample entropy
 profile R squared = 44.1 percent, Katz FD profile R squared = 9.7 percent.
 Neither beats the primary; no further variants were tried.
 
+A later exploratory follow-up (requested by the author, results under
+results/exploratory/, discussion in docs/ISM_COMPARISON.md) characterized
+the two ISM renderings and tested floor-free detector variants. Outcome,
+reported without endorsement: removing the fixed-start floor collapses
+the pyroomacoustics track to R squared 0.002 to 0.009 with negative
+LOOCV, showing that its apparent baseline correlation (47.2 percent, and
+80.7 percent under the start=2000 sensitivity variant) was carried by
+room-dependent saturation against the fixed search start rather than by
+a readable mixing-time signal. Re-sparsifying the band-limited RIR into
+its peak train does not restore the behavior. On the Allen-Berkley track
+a rise-fraction variant (q = 0.9) reaches R squared 0.652, LOOCV 0.385,
+marginally above the original rule; at n = 8 with three q values tried
+this is a hypothesis for pre-registered follow-up, nothing more.
+
 ## Why the two ISM tracks differ (a finding, not a nuisance)
 
 The thesis's Allen-Berkley code rounds every image delay to a single

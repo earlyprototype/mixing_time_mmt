@@ -87,21 +87,55 @@ This also explains the practical implication in REPORT.md: measured
 BRIRs are band-limited like the pyroomacoustics track, so the method as
 specified in 2011 (fixed constants, fixed start) would underperform on
 real measurements for the same reason it underperforms on
-pyroomacoustics. The signal is not gone (rank order survives, Spearman
-0.86 against tmp50), but the fixed-constant detector cannot read it.
+pyroomacoustics. The baseline detections do rank the rooms plausibly
+(Spearman 0.86 against tmp50), but Section 6 shows that ranking is
+mostly an artifact of how fast each room's profile saturates past the
+fixed search start, not a readable mixing-time signal. A precise
+wording of the pathology: detections do not pin exactly at sample 1000
+(only Room 2 does), they cluster just above it, rooms 1 to 4 at 1000 to
+1091, rooms 5 to 8 at 1542 to 3830.
 
 ## 5. Measured differences (from the exploratory diff analysis)
 
-See results/exploratory/profile_diff.md and detectors.md for the full
-tables and results/figures/exploratory/ for the plots. Headline numbers
-are summarized in REPORT.md's exploratory section.
+Full tables in results/exploratory/profile_diff.md, plots in
+results/figures/exploratory/ (rir_zoom_room1.png is the clearest single
+picture). Headlines:
 
-## 6. What would make the method rendering-robust (hypotheses only)
+- Same echo set, different rendering: per-room peak counts match almost
+  one-for-one between tracks. Every AB RIR has exactly 129 leading zero
+  samples and up to 43 percent near-zero samples between spikes; the
+  pyroomacoustics RIRs contain not a single exactly-zero or near-zero
+  sample anywhere.
+- Profile shape: the pyroomacoustics profile recovers from its minimum
+  to 50 percent of its rise within about 40 samples in six of eight
+  rooms (about 1 ms, i.e. instantly at this scale). The AB profile takes
+  500 to 5200 samples, and that slow rise is the quantity the detector
+  actually measures. Tail plateaus agree closely between tracks.
+- Cross-track detections: ab = 1.58 * pra + 1718, R2 0.83, Spearman
+  0.93, so the two renderings rank the rooms almost identically while
+  disagreeing on absolute values.
 
-The exploratory detector study (results/exploratory/detectors.md) tests
-floor-free variants: referencing the search to the profile's own minimum
-instead of a fixed sample, detecting a fraction of the profile's rise
-instead of an absolute threshold, and re-sparsifying a band-limited RIR
-into its peak train before computing HFD. All of it is post-hoc at
-n = 8: it can propose a pre-registered follow-up (ideally on measured
-BRIRs), it cannot confirm anything.
+## 6. Can the pyroomacoustics output be rescued? Tested, and no
+
+The floor-free detector study (results/exploratory/detectors.md, all
+variants reported, none endorsed, n = 8, post-hoc) is blunt:
+
+- Min-referenced start, rise-fraction detection (q = 0.5, 0.7, 0.9), and
+  peak-train re-sparsification ALL collapse on the pyroomacoustics
+  track: R2 0.002 to 0.009, Spearman near zero, negative LOOCV.
+- This retroactively explains the seemingly promising start=2000 result
+  (R2 80.7 percent) in the sensitivity table: with three rooms clamped
+  exactly at the start value, the floor constant itself was carrying the
+  fit. Remove the floor and there is nothing underneath on this track.
+  The baseline Spearman of 0.86 was likewise largely floor-ordering.
+- On the AB track the rise-fraction q = 0.9 variant is the only one that
+  edges past the original rule (R2 0.652, LOOCV 0.385 vs 0.571 / 0.233),
+  a modest, exploratory-only observation.
+
+Conclusion for the rendering question: the mixing-time information the
+2011 method reads is carried by the spike-sparsity texture of the AB
+rendering itself. Once that texture is gone (band-limited rendering, and
+by extension measured RIRs), no affine rescale, re-referencing, or
+re-sparsification of the same HFD feature recovers it. A follow-up would
+need a genuinely different feature, not new constants on this one, and
+would have to be pre-registered on measured BRIRs to count.

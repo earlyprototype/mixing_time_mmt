@@ -56,6 +56,24 @@ Headline: Criterion III R2 47.2 percent (pra) / 57.1 percent (ab) vs 93.49
 claimed; LOOCV 3.5 / 23.3 percent; bootstrap CIs span [4, 91] percent.
 Best-of-sweep criterion flips from III to I. See REPORT.md.
 
+## Round 4 (author-requested exploratory, two parallel agents)
+
+### Agent D: AB vs pra diff characterization: DONE
+Same echo set, different rendering: per-room peak counts match nearly
+one-for-one; AB RIRs have 129 leading zeros and up to 43 percent
+near-zero samples, pra RIRs have none anywhere. pra profiles reach 50
+percent rise within about 40 samples of their minimum in 6 of 8 rooms;
+AB takes 500 to 5200. Cross-track: ab = 1.58 pra + 1718, R2 0.83,
+Spearman 0.93.
+
+### Agent E: floor-free detector variants: DONE
+Min-referenced start, rise-fraction (q 0.5/0.7/0.9) and peak-train
+re-sparsification all collapse on pra (R2 0.002 to 0.009, negative
+LOOCV, Spearman near or below zero), proving the pra baseline and the
+start=2000 sensitivity result were floor artifacts. AB q=0.9 variant:
+R2 0.652, LOOCV 0.385, exploratory only. All variants reported, none
+endorsed. Full tables in results/exploratory/detectors.md.
+
 ### Agent A (ground truth digitization): DONE
 tmp50 recovered from Figure 6.2 at native resolution, four panels agreeing
 within 0.5 samples; independent check against Figure 4.3.2; reconciled
