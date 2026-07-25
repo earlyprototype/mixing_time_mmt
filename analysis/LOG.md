@@ -23,7 +23,7 @@ reference to 2.7e-15; 100k-sample profile in ~0.02 s.
 Status: running. Deliverables: src/mixtime/{rooms,ism,rt_check}.py,
 inputs/rooms_reconstruction.md, Room 1 end-to-end RT check.
 
-### Agent C: room reconstruction and ISM generator
+### Agent C result (room reconstruction and ISM generator)
 Status: DONE. Rooms digitized from Figure 4.3.1.1 floor plans; Sabine RT
 from reconstructed geometry matches tabulated RT within 1 percent for rooms
 1 to 8 (untuned), validating the proportions. Room 1 end to end: RT60 0.454 s

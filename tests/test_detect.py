@@ -69,3 +69,14 @@ def test_detect_determinism():
     assert detect_crossing(profile, k=2, start=1) == detect_crossing(
         profile.copy(), k=2, start=1
     )
+
+
+def test_tail_stats_singleton_tail_has_zero_sd():
+    # A one-sample tail must not yield nan sd (regression: std ddof=1 on a
+    # singleton). MATLAB std of a scalar is 0.
+    profile = np.arange(8, dtype=float)
+    mean, sd = tail_stats(profile, tail_frac=0.0)
+    assert sd == 0.0
+    assert mean == profile[-1]
+    # And detection with k=0 still works against that degenerate threshold.
+    assert detect_crossing(profile, k=0.0, tail_frac=0.0, start=1) is not None

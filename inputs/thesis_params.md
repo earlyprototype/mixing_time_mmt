@@ -65,12 +65,24 @@ Four panels (Criteria I to IV) plot the same eight tmp50% values (y, in
 samples at 44100 per s) against the known detected sample numbers (x, Table
 6.1b). Markers were detected by exact colour (the marker glyphs are flat
 pure blue or purple, distinct from text antialiasing), axes calibrated from
-tick marks (calibration residual under 0.25 px, about 1 sample), and markers
-assigned to rooms by the known x values (Hungarian assignment, near
-coincident x pairs disambiguated across panels by y consensus). The four
-panels agree to within 0.5 samples per room, so the per panel spread is not
-a useful uncertainty measure; realistic uncertainty is about plus minus 5
-samples (0.11 ms) from marker centroid and calibration bias.
+tick marks, and markers assigned to rooms by the known x values (Hungarian
+assignment, near coincident x pairs disambiguated across panels by y
+consensus). Recorded calibration residuals
+(inputs/digitization_debug/digitization_results.json): about 3.9 to 4.4 px
+on x and 1.9 px on y for the four Figure 6.2 panels, i.e. roughly 45
+samples on x and 10 samples on y at the panel scales. The x residual only
+affects room ASSIGNMENT (x values are known exactly from Table 6.1b and
+are well separated relative to 45 samples), not the read-off. The y
+residual of about 10 samples is the honest worst-case single-panel
+read-off uncertainty. Three observations argue the effective error is
+smaller: the four panels agree to within 0.5 samples per room, the
+reconciliation against the reported regressions moved no value by more
+than 2.3 samples, and every value lands within 3.5 samples of a round
+millisecond. We therefore quote plus minus 10 samples (0.23 ms) as the
+conservative uncertainty and note the likely true error is under about 4
+samples. Either bound is negligible for the analysis: switching between
+digitized and reconciled vectors changes the primary R squared by less
+than 0.1 percentage point.
 
 Reconciled values: penalized least squares over the 8 unknowns against the
 12 reported regression statistics (slope, intercept, R2 for four criteria,
@@ -197,6 +209,14 @@ pp.53 to 56, PAGES 64 to 67) unless noted.
 
 (Thesis table prints Thr III for Room 1 as "1.986" and Thr I equals the
 mean by definition.)
+
+Note on Room 3: the row above is a faithful transcription of the thesis's
+Table 6.1a, but it is internally inconsistent in the thesis itself. From
+the printed mean 2.0250 and SD 0.0321 the thresholds would be 1.9929,
+1.9608 and 1.9287; the thesis prints 1.9927, 1.9605 and 1.9284, a uniform
+0.0003 offset consistent with an unrounded mean near 2.0247. The "exact"
+tag on this section refers to the transcription, not to the internal
+consistency of the source. We do not alter the published values.
 
 ### 4.2 Table 6.1b: detected sample numbers (printed p.44, PAGE 55; exact)
 

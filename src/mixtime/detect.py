@@ -41,7 +41,8 @@ def tail_stats(profile, tail_frac=0.1):
     n = x.size
     m = _matlab_round(n * tail_frac)
     tail = x[n - m - 1 :]
-    return float(tail.mean()), float(tail.std(ddof=1))
+    sd = 0.0 if tail.size == 1 else float(tail.std(ddof=1))
+    return float(tail.mean()), sd
 
 
 def detect_crossing(profile, k, tail_frac=0.1, start=1000):

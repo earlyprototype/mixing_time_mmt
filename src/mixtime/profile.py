@@ -116,6 +116,12 @@ def smooth_profile(profile, span=200):
     acts as 199. At the edges the window shrinks symmetrically: index i
     averages profile[i - half : i + half + 1] with
     half = min(i, n - 1 - i, (effective_span - 1) // 2).
+
+    Non-finite profile values (hfd_profile emits nan for constant
+    segments, e.g. the silence before the direct sound) are excluded from
+    each window's average rather than propagated, so one degenerate window
+    only affects outputs whose window overlaps it. An output is nan only
+    when every value in its window is non-finite.
     """
     x = np.asarray(profile, dtype=float)
     n = x.size
@@ -125,6 +131,12 @@ def smooth_profile(profile, span=200):
     hw = (eff - 1) // 2
     idx = np.arange(n)
     half = np.minimum(np.minimum(idx, n - 1 - idx), hw)
-    csum = np.concatenate([[0.0], np.cumsum(x)])
+    good = np.isfinite(x)
+    csum = np.concatenate([[0.0], np.cumsum(np.where(good, x, 0.0))])
+    ccnt = np.concatenate([[0.0], np.cumsum(good.astype(float))])
     sums = csum[idx + half + 1] - csum[idx - half]
-    return sums / (2 * half + 1)
+    cnts = ccnt[idx + half + 1] - ccnt[idx - half]
+    out = np.full(n, np.nan)
+    nz = cnts > 0
+    out[nz] = sums[nz] / cnts[nz]
+    return out

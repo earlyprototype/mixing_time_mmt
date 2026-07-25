@@ -76,3 +76,26 @@ def test_profile_determinism():
     a = hfd_profile(sig)
     b = hfd_profile(sig.copy())
     np.testing.assert_array_equal(a, b)
+
+
+def test_smooth_profile_nan_does_not_poison_rest():
+    # A nan early in the profile must only affect outputs whose smoothing
+    # window overlaps it, not everything after it (regression: cumsum
+    # propagation). Windows past the overlap must equal the nan-free case.
+    rng = np.random.default_rng(7)
+    x = rng.normal(size=1200)
+    x_nan = x.copy()
+    x_nan[10] = np.nan
+    ref = smooth_profile(x, span=200)
+    got = smooth_profile(x_nan, span=200)
+    # Far from the nan (window half-width is 99) values agree; cumsum
+    # rounding order differs so allow float-level tolerance only.
+    assert np.allclose(got[200:], ref[200:], atol=1e-12, rtol=0)
+    # Near the nan the average simply ignores it and stays finite.
+    assert np.all(np.isfinite(got))
+
+
+def test_smooth_profile_all_nan_window_is_nan():
+    x = np.full(5, np.nan)
+    out = smooth_profile(x, span=3)
+    assert np.all(np.isnan(out))

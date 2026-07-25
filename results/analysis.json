@@ -1065,5 +1065,51 @@
     "digitized_gt_slope": 0.3545192332672723
    }
   }
+ },
+ "thesis_baseline": {
+  "I": {
+   "slope": 0.2018802411344545,
+   "intercept": 330.9065672867355,
+   "r2": 0.7229107158970809,
+   "r2_digitized_gt": 0.722608992606513,
+   "published": {
+    "slope": 0.209,
+    "intercept": 331,
+    "r2_percent": 72.29
+   }
+  },
+  "II": {
+   "slope": 0.2759793402098817,
+   "intercept": 239.23783588341902,
+   "r2": 0.7882123818950151,
+   "r2_digitized_gt": 0.7886781097946813,
+   "published": {
+    "slope": 0.276,
+    "intercept": 293,
+    "r2_percent": 78.82
+   }
+  },
+  "III": {
+   "slope": 0.3197062853004832,
+   "intercept": 324.91488325866266,
+   "r2": 0.9349002723802955,
+   "r2_digitized_gt": 0.9352015630122295,
+   "published": {
+    "slope": 0.3197,
+    "intercept": 325,
+    "r2_percent": 93.49
+   }
+  },
+  "IV": {
+   "slope": 0.05171816460427478,
+   "intercept": 2202.056608291024,
+   "r2": 0.013661131425660611,
+   "r2_digitized_gt": 0.013683917544810686,
+   "published": {
+    "slope": 0.0517,
+    "intercept": 2202,
+    "r2_percent": 0.14
+   }
+  }
  }
 }

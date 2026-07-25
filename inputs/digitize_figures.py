@@ -308,7 +308,7 @@ def digitize_fig62_panel(path, crit):
     return img, frame, markers, lims
 
 
-def assign_rooms(markers, xs_known, samples_per_px_x):
+def assign_rooms(markers, xs_known):
     """Assign 8 markers to 8 rooms by known x (Hungarian on |dx|)."""
     assert len(markers) == 8, f"expected 8 markers, found {len(markers)}"
     cost = np.zeros((8, 8))
@@ -577,11 +577,12 @@ def reconcile(y_dig, sigma_dig=12.0):
     digitized estimates while reproducing the 12 reported regression stats
     (slope, intercept, R2 for each of the four criteria).
 
-    Two stages. Stage 1 fits with every constraint under a robust (soft_l1)
-    loss, then any reported stat that still disagrees by more than 10 sigma
-    is declared unreproducible (thesis typo) and dropped. Stage 2 refits with
-    only the consistent constraints under a plain quadratic loss. Returns the
-    solution and the list of dropped constraints."""
+    A reported stat is screened out up front if the digitized fit already
+    disagrees with it beyond tolerance (slope 1 percent relative, intercept
+    15 samples, R2 0.005 absolute); such stats are declared unreproducible
+    (thesis typo). The remaining constraints are then fitted with a single
+    Levenberg-Marquardt least squares. Returns the solution and the list of
+    dropped constraints."""
     y0 = np.asarray(y_dig, float)
 
     def make_residuals(active):
@@ -632,8 +633,7 @@ def main():
     for crit in (1, 2, 3, 4):
         img, frame, markers, lims = digitize_fig62_panel(
             paths[f"fig62_c{crit}"], crit)
-        assigned = assign_rooms(markers, X_KNOWN[crit],
-                                lims["samples_per_px_x"])
+        assigned = assign_rooms(markers, X_KNOWN[crit])
         panels[crit] = (img, frame, assigned, lims)
         results["fig62"][crit] = {"lims": lims}
 
@@ -909,7 +909,7 @@ def main():
             "footprint_provenance": "Digitized from Figure 4.3.1.1, plus "
                                     "minus about 0.5 m; height derived from "
                                     "V/(L*W), not stated in thesis",
-            "included_in_2011": r <= 9 and r != 9,
+            "included_in_2011": r <= 8,
             "tmp50_fig432_mean_ms": round(bar["mean_ms"], 1)
             if bar["mean_ms"] is not None else None,
             "tmp50_fig432_mean_from_dot": bar["mean_from_dot"],

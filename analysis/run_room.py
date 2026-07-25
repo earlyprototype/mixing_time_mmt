@@ -20,6 +20,7 @@ import sys
 import time
 
 import numpy as np
+from numpy.lib.stride_tricks import sliding_window_view
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
@@ -80,7 +81,6 @@ def sampen_profile(rir, window=50, m=2, r_factor=0.2):
     seg_len = window + 1
     padded = np.concatenate([x, np.zeros(window)])
     n_out = n - 2  # same length convention as hfd_profile
-    from numpy.lib.stride_tricks import sliding_window_view
     segs = sliding_window_view(padded, seg_len)[:n_out]
     out = np.full(n_out, np.nan)
     chunk = 256
@@ -123,7 +123,6 @@ def katz_profile(rir, window=50):
     seg_len = window + 1
     padded = np.concatenate([x, np.zeros(window)])
     n_out = n - 2
-    from numpy.lib.stride_tricks import sliding_window_view
     segs = sliding_window_view(padded, seg_len)[:n_out]
     steps = np.abs(np.diff(segs, axis=1))
     Ltot = steps.sum(axis=1)
@@ -221,12 +220,14 @@ def process(room_number):
         for name, value in SENSITIVITY:
             cfg = dict(PRIMARY)
             cfg[name] = value
-            gv = rir_for(track, cfg["length_factor"])
             if name in ("window", "kmax", "length_factor"):
+                gv = rir_for(track, cfg["length_factor"])
                 p = hfd_profile(gv["rir"], window=cfg["window"],
                                 kmax=cfg["kmax"])
-            s = moving_average_nan(p, span=cfg["span"]) \
-                if name in ("window", "kmax", "length_factor") else smoothed
+                s = moving_average_nan(p, span=cfg["span"])
+            else:
+                # tail_frac and start do not change the profile itself.
+                s = smoothed
             r = crossings_for_profile(s, cfg["tail_frac"], cfg["start"],
                                       [2.0])
             out[sens_key].append({

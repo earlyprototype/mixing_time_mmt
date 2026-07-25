@@ -12,7 +12,7 @@ def schroeder_edc_db(rir):
     """Schroeder energy decay curve in dB, normalized to 0 dB at t = 0."""
     e = np.asarray(rir, dtype=np.float64) ** 2
     edc = np.cumsum(e[::-1])[::-1]
-    if edc[0] <= 0.0:
+    if edc.size == 0 or edc[0] <= 0.0:
         raise ValueError("RIR has no energy")
     edc = edc / edc[0]
     with np.errstate(divide="ignore"):

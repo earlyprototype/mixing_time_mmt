@@ -31,8 +31,14 @@ RIR generator in `src/mixtime/ism.py`, RT estimator in
    clusters, then converted to metres.
 5. L = horizontal extent, W = vertical extent, H = V / (L * W).
 
-Estimated digitization uncertainty: about 1 px per edge, roughly 0.3 m in
-L or W, which propagates to a few percent in H and S.
+Digitization uncertainty, reconciled figure used everywhere: treat the
+footprints as accurate to about plus minus 1 m. The pixel-level PRECISION
+of a single edge read is about 1 px (roughly 0.3 m), but the two
+independent digitizations of the same figure (this one and
+inputs/digitize_figures.py's cross-check) differ by up to 0.7 to 1.4 m on
+rooms 7 to 9, so the 1 m envelope is the honest ACCURACY bound and is the
+figure quoted in inputs/thesis_params.md and inputs/ground_truth.json.
+This propagates to a few percent in H and S.
 
 ## Assumptions (all of them)
 

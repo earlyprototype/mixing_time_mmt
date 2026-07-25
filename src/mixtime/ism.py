@@ -103,7 +103,11 @@ def generate_rir(room, fs=44100, length_samples=None, max_order=None):
             (after removing the global delay).
         raw_rir : the untrimmed float64 RIR (for decay checks).
         fs, length_samples, max_order : as used.
-        order_capped : True if the required order exceeded MAX_ORDER_CAP.
+        order_capped : True if the order actually used is below the order
+            needed to cover length_samples, whether because MAX_ORDER_CAP
+            bound the default or because the caller supplied a smaller
+            max_order. In either case late-arriving images are missing
+            from the tail of the window.
         source, mic : positions actually used, in m.
         positions_clipped : True if either position had to be moved to
             respect the 0.5 m wall margin.

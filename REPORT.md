@@ -15,9 +15,12 @@ does not survive honest validation.** Specifically:
 
 1. **The 2011 arithmetic reproduces exactly.** Feeding the thesis's own
    detected sample numbers (its Table 6.1b) to a regression against our
-   digitized ground truth gives R squared = 93.52 percent and slope 0.3195,
-   matching the thesis to the third digit. The 2011 analysis was internally
-   correct, and our recovered ground truth is essentially exact.
+   recovered ground truth gives R squared = 93.49 percent and slope 0.3197
+   for Criterion III, identical to the published values (recomputed inside
+   analysis/analyze.py, table at the top of results/summary.md; the raw
+   digitized vector gives 93.52 percent). Criteria I and II also land
+   exactly on the published 72.29 and 78.82 percent. The 2011 analysis was
+   internally correct, and our recovered ground truth is essentially exact.
 2. **The 2011 detector behavior broadly reproduces** on a faithful
    re-implementation of its Allen-Berkley ISM: our detected samples
    correlate r = 0.84 with the thesis's for Criterion III (0.86 for
@@ -26,8 +29,12 @@ does not survive honest validation.** Specifically:
    per the documented method and re-running the identical detector yields
    Criterion III R squared = 57.1 percent (faithful Allen-Berkley track)
    and 47.2 percent (pre-registered pyroomacoustics track), versus 93.49
-   claimed. Ordinary re-generation noise, same method, same rooms, same
-   ground truth, costs about 40 points of R squared.
+   claimed. The pipelines are deterministic, so this is not noise in the
+   statistical sense: the roughly 40-point shortfall comes from the parts
+   of the 2011 setup that are not recoverable from the thesis and had to
+   be reconstructed (exact room dimensions, RIR length) plus ISM
+   implementation detail. That is the point: a result that only holds for
+   one unrecorded realization of its inputs is not a reproducible result.
 4. **It fails honest validation outright.** LOOCV R squared is 23.3 percent
    (AB track) and 3.5 percent (pyroomacoustics track); LOOCV RMSE is about
    20 ms on a ground-truth range of 22 to 98 ms. Bootstrap 95 percent CIs

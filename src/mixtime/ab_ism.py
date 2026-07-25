@@ -55,7 +55,7 @@ def ab_rir(room, fs=44100, length_samples=None, c=C_SOUND):
     NZ = NZ.ravel()[:, None]
 
     # Eight sign permutations p in {0,1}^3 (l, j, k in the MATLAB code).
-    P = np.array([[l, j, k] for l in (0, 1) for j in (0, 1) for k in (0, 1)])
+    P = np.array([[i, j, k] for i in (0, 1) for j in (0, 1) for k in (0, 1)])
     sign = 1 - 2 * P  # +1 for p=0, -1 for p=1
 
     # Image position relative to receiver: (r +/- r0) - 2 n rl, per axis.
