@@ -1,0 +1,431 @@
+{
+ "room": 7,
+ "evals": 6000,
+ "elapsed_s": 74.6,
+ "digitized_geometry": {
+  "L": 37.72,
+  "W": 16.46,
+  "H": 13.365
+ },
+ "best": {
+  "score": 1.0567945869198567,
+  "L": 35.98489508672759,
+  "W": 19.216327417241093,
+  "H": 12.000042931839015,
+  "npts": 53626,
+  "beta_formula": "sqrt",
+  "swap_axis": true,
+  "tail_mean": 1.9681747180459936,
+  "tail_sd": 0.039390162614832,
+  "crossings": [
+   9608,
+   9601,
+   9593,
+   2518
+  ],
+  "target_mean": 1.9682,
+  "target_sd": 0.0394,
+  "target_crossings": [
+   14850,
+   12308,
+   11708,
+   2192
+  ],
+  "exact_match": false
+ },
+ "top10_coarse": [
+  {
+   "score": 1.963666435424703,
+   "L": 35.98501622679949,
+   "W": 19.21633147646081,
+   "H": 12.0,
+   "npts": 53626,
+   "beta_formula": "sqrt",
+   "swap_axis": true,
+   "tail_mean": 1.96738513673432,
+   "tail_sd": 0.039272872078000766,
+   "crossings": [
+    9608,
+    9601,
+    9593,
+    2518
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 2.4317091359829743,
+   "L": 28.973446555959693,
+   "W": 14.320008467016747,
+   "H": 20.0,
+   "npts": 46922,
+   "beta_formula": "sqrt",
+   "swap_axis": false,
+   "tail_mean": 1.9680133633516654,
+   "tail_sd": 0.040213408898014724,
+   "crossings": [
+    12999,
+    11920,
+    11199,
+    7440
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 2.4576666374296128,
+   "L": 35.293862813843596,
+   "W": 13.830099857116382,
+   "H": 17.0,
+   "npts": 50274,
+   "beta_formula": "sqrt",
+   "swap_axis": true,
+   "tail_mean": 1.9681477036359434,
+   "tail_sd": 0.04007107491873109,
+   "crossings": [
+    13159,
+    12468,
+    10148,
+    9415
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 2.796122921339533,
+   "L": 34.62989223470408,
+   "W": 17.11568380568917,
+   "H": 14.0,
+   "npts": 50274,
+   "beta_formula": "sqrt",
+   "swap_axis": false,
+   "tail_mean": 1.9674020773214347,
+   "tail_sd": 0.038966980673949804,
+   "crossings": [
+    13610,
+    13306,
+    9470,
+    7190
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 2.8900095381916286,
+   "L": 37.40455866448751,
+   "W": 18.487051436768354,
+   "H": 12.0,
+   "npts": 40219,
+   "beta_formula": "sqrt",
+   "swap_axis": false,
+   "tail_mean": 1.9670783279998256,
+   "tail_sd": 0.03908002993745829,
+   "crossings": [
+    14305,
+    11312,
+    10570,
+    7457
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 3.1163652579074976,
+   "L": 34.619346921273575,
+   "W": 19.974380266979374,
+   "H": 12.0,
+   "npts": 43571,
+   "beta_formula": "sqrt",
+   "swap_axis": false,
+   "tail_mean": 1.968172667147508,
+   "tail_sd": 0.04054921105531956,
+   "crossings": [
+    13498,
+    10387,
+    10138,
+    10130
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 3.152600708124356,
+   "L": 27.982222217025356,
+   "W": 17.44384857189204,
+   "H": 17.0,
+   "npts": 40219,
+   "beta_formula": "one_minus",
+   "swap_axis": true,
+   "tail_mean": 1.9696582850981357,
+   "tail_sd": 0.03955747366773467,
+   "crossings": [
+    12772,
+    12071,
+    11762,
+    8558
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 3.1704195968431117,
+   "L": 57.94689311191939,
+   "W": 28.640016934033493,
+   "H": 5.0,
+   "npts": 50274,
+   "beta_formula": "sqrt",
+   "swap_axis": true,
+   "tail_mean": 1.969367667651107,
+   "tail_sd": 0.03942074684296349,
+   "crossings": [
+    11597,
+    11590,
+    11073,
+    11064
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 3.4320561712463507,
+   "L": 33.305506205744706,
+   "W": 20.762332682417735,
+   "H": 12.0,
+   "npts": 43571,
+   "beta_formula": "sqrt",
+   "swap_axis": false,
+   "tail_mean": 1.9676989493456367,
+   "tail_sd": 0.04050096633069777,
+   "crossings": [
+    12874,
+    12153,
+    10205,
+    10196
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 3.5640646987322104,
+   "L": 40.97464106813024,
+   "W": 20.25155018735264,
+   "H": 10.0,
+   "npts": 50274,
+   "beta_formula": "sqrt",
+   "swap_axis": false,
+   "tail_mean": 1.9707026492094266,
+   "tail_sd": 0.03939231849870534,
+   "crossings": [
+    15713,
+    11856,
+    11516,
+    5630
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  }
+ ],
+ "top5_refined": [
+  {
+   "score": 1.0567945869198567,
+   "L": 35.98489508672759,
+   "W": 19.216327417241093,
+   "H": 12.000042931839015,
+   "npts": 53626,
+   "beta_formula": "sqrt",
+   "swap_axis": true,
+   "tail_mean": 1.9681747180459936,
+   "tail_sd": 0.039390162614832,
+   "crossings": [
+    9608,
+    9601,
+    9593,
+    2518
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 1.561009385215162,
+   "L": 57.17106630940928,
+   "W": 20.734671675882247,
+   "H": 7.000031191390008,
+   "npts": 43571,
+   "beta_formula": "sqrt",
+   "swap_axis": false,
+   "tail_mean": 1.9681182325369415,
+   "tail_sd": 0.03946816664424139,
+   "crossings": [
+    13364,
+    10666,
+    9028,
+    5405
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 1.7000864431874927,
+   "L": 28.97341656424926,
+   "W": 14.319998222415457,
+   "H": 20.000035011034925,
+   "npts": 46922,
+   "beta_formula": "sqrt",
+   "swap_axis": false,
+   "tail_mean": 1.968203186288375,
+   "tail_sd": 0.039134730063230976,
+   "crossings": [
+    12999,
+    11922,
+    11199,
+    7441
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 1.7678609822579734,
+   "L": 34.62988508717266,
+   "W": 17.115701926571795,
+   "H": 13.999988067365884,
+   "npts": 50274,
+   "beta_formula": "sqrt",
+   "swap_axis": false,
+   "tail_mean": 1.9680835035618705,
+   "tail_sd": 0.03937185721802668,
+   "crossings": [
+    13610,
+    13306,
+    8936,
+    7190
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  },
+  {
+   "score": 1.8677411211694388,
+   "L": 34.14925191894868,
+   "W": 21.03828800649237,
+   "H": 11.54999616358546,
+   "npts": 43571,
+   "beta_formula": "sqrt",
+   "swap_axis": false,
+   "tail_mean": 1.968209427998777,
+   "tail_sd": 0.03935771701958456,
+   "crossings": [
+    13153,
+    10697,
+    10647,
+    9433
+   ],
+   "target_mean": 1.9682,
+   "target_sd": 0.0394,
+   "target_crossings": [
+    14850,
+    12308,
+    11708,
+    2192
+   ],
+   "exact_match": false
+  }
+ ],
+ "note": "exact_match false means the printed fingerprints were NOT reproduced bit-for-bit; treat the best fit as a constraint, not an identification."
+}

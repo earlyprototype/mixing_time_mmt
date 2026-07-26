@@ -1,0 +1,3 @@
+room 8: grid 9 ratios x 17 heights x 23 lengths x 2 beta x 2 swap
+coarse done: 6000 evals in 106 s, best score 1.1463
+done in 135 s; best score 0.8771, exact=False

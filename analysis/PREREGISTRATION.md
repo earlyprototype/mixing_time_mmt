@@ -83,6 +83,30 @@ digitized-vs-reconciled spread is carried as ground truth uncertainty and the
 primary regression is additionally run with the raw digitized values as a
 robustness check. If the two disagree materially, both results are reported.
 
+## Amendment 1 (before any regression was run)
+
+Timing: recorded after single-room smoke tests of the pipeline on Room 1,
+before any cross-room regression, sweep, or validation statistic existed.
+
+Observation that triggered it: the pyroomacoustics ISM RIR yields Room 1
+crossings near sample 1070 for all four criteria, whereas the thesis reports
+6277 / 5772 / 3136 / 2053. Cause: pyroomacoustics renders each image source
+as an 81-tap fractional-delay sinc kernel, so the early RIR is dense and the
+FD profile saturates almost immediately. The thesis's Allen-Berkley MATLAB
+code instead rounds each image delay to a single integer sample (sparse
+spike train, beta = sqrt(1 - alpha), butter(3, 0.01) highpass), and a
+faithful port of it gives Room 1 crossings 7906 / 6168 / 4032 / 1796 and
+tail stats within 0.01 of the thesis values, which is qualitatively the
+thesis behavior.
+
+Amendment: every analysis (primary regression, k sweep, LOOCV, bootstrap,
+sensitivity) is run twice, once per RIR track: track "pra" is the
+pre-registered pyroomacoustics path and remains the primary; track "ab" is
+the thesis-faithful Allen-Berkley port, labeled "faithful reproduction
+track". Both are reported in full, neither is selected post hoc, and
+divergence between them is itself a finding about the method's dependence on
+ISM implementation details. No other change to the plan.
+
 ## Verdict rules
 
 - "Reproduces" requires the primary R squared within roughly 10 points of

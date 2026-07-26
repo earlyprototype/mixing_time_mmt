@@ -1,0 +1,1084 @@
+{
+ "label": "EXPLORATORY, NOT CONFIRMATORY. Post-hoc detector variants at n = 8, devised after seeing the confirmatory results. No variant is selected or endorsed; all are reported identically.",
+ "config": {
+  "rooms": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "tail_frac": 0.1,
+  "k": 2.0,
+  "fixed_start_1based": 1000,
+  "floor_pinned_tolerance_samples": 5,
+  "rise_fractions": [
+   0.5,
+   0.7,
+   0.9
+  ],
+  "target": "tmp50_samples_reconciled from inputs/ground_truth.json",
+  "sample_convention": "1-based (MATLAB/thesis convention)",
+  "fs_hz": 44100,
+  "tail_stats_nan_guard": "detect.tail_stats on the exact MATLAB tail slice; if the tail contains nan (D3 sparse signal, all-zero windows), non-finite samples are excluded from the same slice (mean, sd ddof=1)"
+ },
+ "detector_order": [
+  "D0",
+  "D1",
+  "D2q50",
+  "D2q70",
+  "D2q90",
+  "D3"
+ ],
+ "detectors": {
+  "D0": {
+   "description": "Baseline, original fixed-start rule (first sample >= 1000 with profile >= tail_mean - 2 tail_sd), read from results/rooms/room{N}.json.",
+   "tracks": {
+    "pra": {
+     "per_room": {
+      "1": {
+       "detected": 1070,
+       "search_start": 1000,
+       "tail_mean": 2.0437126985002614,
+       "tail_sd": 0.03427761461963165,
+       "source": "results/rooms/room1.json:primary.crossings.2.0"
+      },
+      "2": {
+       "detected": 1000,
+       "search_start": 1000,
+       "tail_mean": 2.029661366831817,
+       "tail_sd": 0.03693959646083358,
+       "source": "results/rooms/room2.json:primary.crossings.2.0"
+      },
+      "3": {
+       "detected": 1044,
+       "search_start": 1000,
+       "tail_mean": 2.012785421573675,
+       "tail_sd": 0.032394505898754165,
+       "source": "results/rooms/room3.json:primary.crossings.2.0"
+      },
+      "4": {
+       "detected": 1091,
+       "search_start": 1000,
+       "tail_mean": 1.9662206502851607,
+       "tail_sd": 0.06513589482644751,
+       "source": "results/rooms/room4.json:primary.crossings.2.0"
+      },
+      "5": {
+       "detected": 3337,
+       "search_start": 1000,
+       "tail_mean": 1.966273378145416,
+       "tail_sd": 0.045311588398159505,
+       "source": "results/rooms/room5.json:primary.crossings.2.0"
+      },
+      "6": {
+       "detected": 1542,
+       "search_start": 1000,
+       "tail_mean": 1.9511652134000033,
+       "tail_sd": 0.060548687664980186,
+       "source": "results/rooms/room6.json:primary.crossings.2.0"
+      },
+      "7": {
+       "detected": 3830,
+       "search_start": 1000,
+       "tail_mean": 1.9501498511336557,
+       "tail_sd": 0.04806715459390028,
+       "source": "results/rooms/room7.json:primary.crossings.2.0"
+      },
+      "8": {
+       "detected": 3807,
+       "search_start": 1000,
+       "tail_mean": 1.9455818626157422,
+       "tail_sd": 0.03463036015302625,
+       "source": "results/rooms/room8.json:primary.crossings.2.0"
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 1,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.5611280754145607,
+      "intercept": 1228.2596813741409,
+      "r2": 0.4722119861763161,
+      "spearman_rho": 0.8571428571428572,
+      "loocv_r2": 0.03517576696677238
+     }
+    },
+    "ab": {
+     "per_room": {
+      "1": {
+       "detected": 4032,
+       "search_start": 1000,
+       "tail_mean": 2.043197674147085,
+       "tail_sd": 0.031961912487489266,
+       "source": "results/rooms/room1.json:ab.crossings.2.0"
+      },
+      "2": {
+       "detected": 1829,
+       "search_start": 1000,
+       "tail_mean": 2.0187922453044447,
+       "tail_sd": 0.049947567019918045,
+       "source": "results/rooms/room2.json:ab.crossings.2.0"
+      },
+      "3": {
+       "detected": 2878,
+       "search_start": 1000,
+       "tail_mean": 2.0213385377040005,
+       "tail_sd": 0.032313403286167386,
+       "source": "results/rooms/room3.json:ab.crossings.2.0"
+      },
+      "4": {
+       "detected": 5237,
+       "search_start": 1000,
+       "tail_mean": 1.972459472352452,
+       "tail_sd": 0.05911365506283733,
+       "source": "results/rooms/room4.json:ab.crossings.2.0"
+      },
+      "5": {
+       "detected": 7067,
+       "search_start": 1000,
+       "tail_mean": 1.9694494054878506,
+       "tail_sd": 0.051981410289084644,
+       "source": "results/rooms/room5.json:ab.crossings.2.0"
+      },
+      "6": {
+       "detected": 3657,
+       "search_start": 1000,
+       "tail_mean": 1.9543845162622828,
+       "tail_sd": 0.07461441966145092,
+       "source": "results/rooms/room6.json:ab.crossings.2.0"
+      },
+      "7": {
+       "detected": 8039,
+       "search_start": 1000,
+       "tail_mean": 1.94130617193427,
+       "tail_sd": 0.0623876301811047,
+       "source": "results/rooms/room7.json:ab.crossings.2.0"
+      },
+      "8": {
+       "detected": 7436,
+       "search_start": 1000,
+       "tail_mean": 1.9559335812291978,
+       "tail_sd": 0.03807524728825853,
+       "source": "results/rooms/room8.json:ab.crossings.2.0"
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 0,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.3546434741439747,
+      "intercept": 620.1123032832259,
+      "r2": 0.5711246511211339,
+      "spearman_rho": 0.7142857142857144,
+      "loocv_r2": 0.23281868844937337
+     }
+    }
+   }
+  },
+  "D1": {
+   "description": "Min-referenced start: same threshold rule, search starts at the argmin of the smoothed profile over finite samples.",
+   "tracks": {
+    "pra": {
+     "per_room": {
+      "1": {
+       "detected": 310,
+       "search_start": 20,
+       "argmin_0based": 19,
+       "profile_min": 0.9999735997706909,
+       "tail_mean": 2.0437126985002614,
+       "tail_sd": 0.03427761461963165,
+       "threshold": 1.975157469260998
+      },
+      "2": {
+       "detected": 383,
+       "search_start": 20,
+       "argmin_0based": 19,
+       "profile_min": 0.9999819391089299,
+       "tail_mean": 2.029661366831817,
+       "tail_sd": 0.03693959646083358,
+       "threshold": 1.9557821739101497
+      },
+      "3": {
+       "detected": 296,
+       "search_start": 20,
+       "argmin_0based": 19,
+       "profile_min": 0.9999839395328132,
+       "tail_mean": 2.012785421573675,
+       "tail_sd": 0.032394505898754165,
+       "threshold": 1.9479964097761668
+      },
+      "4": {
+       "detected": 3165,
+       "search_start": 2868,
+       "argmin_0based": 2867,
+       "profile_min": 0.9999165722021265,
+       "tail_mean": 1.9662206502851607,
+       "tail_sd": 0.06513589482644751,
+       "threshold": 1.8359488606322656
+      },
+      "5": {
+       "detected": 3337,
+       "search_start": 2825,
+       "argmin_0based": 2824,
+       "profile_min": 0.9998719055983677,
+       "tail_mean": 1.966273378145416,
+       "tail_sd": 0.045311588398159505,
+       "threshold": 1.875650201349097
+      },
+      "6": {
+       "detected": 350,
+       "search_start": 20,
+       "argmin_0based": 19,
+       "profile_min": 0.9999186786905684,
+       "tail_mean": 1.9511652134000033,
+       "tail_sd": 0.060548687664980186,
+       "threshold": 1.8300678380700428
+      },
+      "7": {
+       "detected": 357,
+       "search_start": 20,
+       "argmin_0based": 19,
+       "profile_min": 0.9998993697403973,
+       "tail_mean": 1.9501498511336557,
+       "tail_sd": 0.04806715459390028,
+       "threshold": 1.854015541945855
+      },
+      "8": {
+       "detected": 360,
+       "search_start": 20,
+       "argmin_0based": 19,
+       "profile_min": 0.9999089168637608,
+       "tail_mean": 1.9455818626157422,
+       "tail_sd": 0.03463036015302625,
+       "threshold": 1.8763211423096897
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 0,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.04358769231011362,
+      "intercept": 2354.4595661512562,
+      "r2": 0.0029797369978099564,
+      "spearman_rho": 0.1666666666666667,
+      "loocv_r2": -0.45333462457513063
+     }
+    },
+    "ab": {
+     "per_room": {
+      "1": {
+       "detected": 4032,
+       "search_start": 230,
+       "argmin_0based": 229,
+       "profile_min": 1.2399075746434165,
+       "tail_mean": 2.043197674147085,
+       "tail_sd": 0.031961912487489266,
+       "threshold": 1.9792738491721065
+      },
+      "2": {
+       "detected": 1829,
+       "search_start": 237,
+       "argmin_0based": 236,
+       "profile_min": 1.0113719207970508,
+       "tail_mean": 2.0187922453044447,
+       "tail_sd": 0.049947567019918045,
+       "threshold": 1.9188971112646085
+      },
+      "3": {
+       "detected": 2878,
+       "search_start": 883,
+       "argmin_0based": 882,
+       "profile_min": 1.2400433630848064,
+       "tail_mean": 2.0213385377040005,
+       "tail_sd": 0.032313403286167386,
+       "threshold": 1.9567117311316657
+      },
+      "4": {
+       "detected": 5237,
+       "search_start": 1440,
+       "argmin_0based": 1439,
+       "profile_min": 1.0031918626683711,
+       "tail_mean": 1.972459472352452,
+       "tail_sd": 0.05911365506283733,
+       "threshold": 1.8542321622267774
+      },
+      "5": {
+       "detected": 7067,
+       "search_start": 4622,
+       "argmin_0based": 4621,
+       "profile_min": 1.0031721379369885,
+       "tail_mean": 1.9694494054878506,
+       "tail_sd": 0.051981410289084644,
+       "threshold": 1.8654865849096813
+      },
+      "6": {
+       "detected": 3657,
+       "search_start": 1876,
+       "argmin_0based": 1875,
+       "profile_min": 1.0032132734035653,
+       "tail_mean": 1.9543845162622828,
+       "tail_sd": 0.07461441966145092,
+       "threshold": 1.805155676939381
+      },
+      "7": {
+       "detected": 8039,
+       "search_start": 903,
+       "argmin_0based": 902,
+       "profile_min": 1.0032181080139995,
+       "tail_mean": 1.94130617193427,
+       "tail_sd": 0.0623876301811047,
+       "threshold": 1.8165309115720605
+      },
+      "8": {
+       "detected": 7436,
+       "search_start": 903,
+       "argmin_0based": 902,
+       "profile_min": 1.0032162576857795,
+       "tail_mean": 1.9559335812291978,
+       "tail_sd": 0.03807524728825853,
+       "threshold": 1.8797830866526808
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 0,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.3546434741439747,
+      "intercept": 620.1123032832259,
+      "r2": 0.5711246511211339,
+      "spearman_rho": 0.7142857142857144,
+      "loocv_r2": 0.23281868844937337
+     }
+    }
+   }
+  },
+  "D2q50": {
+   "description": "Rise fraction q = 0.5: with m = finite profile minimum and M = tail mean, first sample at or after the argmin with (p - m)/(M - m) >= q.",
+   "tracks": {
+    "pra": {
+     "per_room": {
+      "1": {
+       "detected": 40,
+       "search_start": 20,
+       "q": 0.5,
+       "argmin_0based": 19,
+       "profile_min": 0.9999735997706909,
+       "tail_mean": 2.0437126985002614,
+       "rise_target": 1.521843149135476
+      },
+      "2": {
+       "detected": 39,
+       "search_start": 20,
+       "q": 0.5,
+       "argmin_0based": 19,
+       "profile_min": 0.9999819391089299,
+       "tail_mean": 2.029661366831817,
+       "rise_target": 1.5148216529703733
+      },
+      "3": {
+       "detected": 39,
+       "search_start": 20,
+       "q": 0.5,
+       "argmin_0based": 19,
+       "profile_min": 0.9999839395328132,
+       "tail_mean": 2.012785421573675,
+       "rise_target": 1.5063846805532441
+      },
+      "4": {
+       "detected": 3100,
+       "search_start": 2868,
+       "q": 0.5,
+       "argmin_0based": 2867,
+       "profile_min": 0.9999165722021265,
+       "tail_mean": 1.9662206502851607,
+       "rise_target": 1.4830686112436435
+      },
+      "5": {
+       "detected": 3263,
+       "search_start": 2825,
+       "q": 0.5,
+       "argmin_0based": 2824,
+       "profile_min": 0.9998719055983677,
+       "tail_mean": 1.966273378145416,
+       "rise_target": 1.4830726418718918
+      },
+      "6": {
+       "detected": 36,
+       "search_start": 20,
+       "q": 0.5,
+       "argmin_0based": 19,
+       "profile_min": 0.9999186786905684,
+       "tail_mean": 1.9511652134000033,
+       "rise_target": 1.4755419460452859
+      },
+      "7": {
+       "detected": 36,
+       "search_start": 20,
+       "q": 0.5,
+       "argmin_0based": 19,
+       "profile_min": 0.9998993697403973,
+       "tail_mean": 1.9501498511336557,
+       "rise_target": 1.4750246104370266
+      },
+      "8": {
+       "detected": 36,
+       "search_start": 20,
+       "q": 0.5,
+       "argmin_0based": 19,
+       "profile_min": 0.9999089168637608,
+       "tail_mean": 1.9455818626157422,
+       "rise_target": 1.4727453897397516
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 0,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.03356283699213496,
+      "intercept": 2373.444308382352,
+      "r2": 0.0020629845217876586,
+      "spearman_rho": -0.527855762350754,
+      "loocv_r2": -0.4537165660144229
+     }
+    },
+    "ab": {
+     "per_room": {
+      "1": {
+       "detected": 1165,
+       "search_start": 230,
+       "q": 0.5,
+       "argmin_0based": 229,
+       "profile_min": 1.2399075746434165,
+       "tail_mean": 2.043197674147085,
+       "rise_target": 1.6415526243952507
+      },
+      "2": {
+       "detected": 536,
+       "search_start": 237,
+       "q": 0.5,
+       "argmin_0based": 236,
+       "profile_min": 1.0113719207970508,
+       "tail_mean": 2.0187922453044447,
+       "rise_target": 1.5150820830507477
+      },
+      "3": {
+       "detected": 1036,
+       "search_start": 883,
+       "q": 0.5,
+       "argmin_0based": 882,
+       "profile_min": 1.2400433630848064,
+       "tail_mean": 2.0213385377040005,
+       "rise_target": 1.6306909503944036
+      },
+      "4": {
+       "detected": 3189,
+       "search_start": 1440,
+       "q": 0.5,
+       "argmin_0based": 1439,
+       "profile_min": 1.0031918626683711,
+       "tail_mean": 1.972459472352452,
+       "rise_target": 1.4878256675104116
+      },
+      "5": {
+       "detected": 5162,
+       "search_start": 4622,
+       "q": 0.5,
+       "argmin_0based": 4621,
+       "profile_min": 1.0031721379369885,
+       "tail_mean": 1.9694494054878506,
+       "rise_target": 1.4863107717124195
+      },
+      "6": {
+       "detected": 3566,
+       "search_start": 1876,
+       "q": 0.5,
+       "argmin_0based": 1875,
+       "profile_min": 1.0032132734035653,
+       "tail_mean": 1.9543845162622828,
+       "rise_target": 1.478798894832924
+      },
+      "7": {
+       "detected": 3801,
+       "search_start": 903,
+       "q": 0.5,
+       "argmin_0based": 902,
+       "profile_min": 1.0032181080139995,
+       "tail_mean": 1.94130617193427,
+       "rise_target": 1.4722621399741347
+      },
+      "8": {
+       "detected": 4673,
+       "search_start": 903,
+       "q": 0.5,
+       "argmin_0based": 902,
+       "profile_min": 1.0032162576857795,
+       "tail_mean": 1.9559335812291978,
+       "rise_target": 1.4795749194574888
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 0,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.43250589019187313,
+      "intercept": 1150.7129714552939,
+      "r2": 0.5003274136969927,
+      "spearman_rho": 0.6666666666666669,
+      "loocv_r2": 0.1154360044352204
+     }
+    }
+   }
+  },
+  "D2q70": {
+   "description": "Rise fraction q = 0.7: with m = finite profile minimum and M = tail mean, first sample at or after the argmin with (p - m)/(M - m) >= q.",
+   "tracks": {
+    "pra": {
+     "per_room": {
+      "1": {
+       "detected": 71,
+       "search_start": 20,
+       "q": 0.7,
+       "argmin_0based": 19,
+       "profile_min": 0.9999735997706909,
+       "tail_mean": 2.0437126985002614,
+       "rise_target": 1.73059096888139
+      },
+      "2": {
+       "detected": 70,
+       "search_start": 20,
+       "q": 0.7,
+       "argmin_0based": 19,
+       "profile_min": 0.9999819391089299,
+       "tail_mean": 2.029661366831817,
+       "rise_target": 1.7207575385149507
+      },
+      "3": {
+       "detected": 68,
+       "search_start": 20,
+       "q": 0.7,
+       "argmin_0based": 19,
+       "profile_min": 0.9999839395328132,
+       "tail_mean": 2.012785421573675,
+       "rise_target": 1.7089449769614165
+      },
+      "4": {
+       "detected": 3136,
+       "search_start": 2868,
+       "q": 0.7,
+       "argmin_0based": 2867,
+       "profile_min": 0.9999165722021265,
+       "tail_mean": 1.9662206502851607,
+       "rise_target": 1.6763294268602504
+      },
+      "5": {
+       "detected": 3298,
+       "search_start": 2825,
+       "q": 0.7,
+       "argmin_0based": 2824,
+       "profile_min": 0.9998719055983677,
+       "tail_mean": 1.966273378145416,
+       "rise_target": 1.6763529363813015
+      },
+      "6": {
+       "detected": 57,
+       "search_start": 20,
+       "q": 0.7,
+       "argmin_0based": 19,
+       "profile_min": 0.9999186786905684,
+       "tail_mean": 1.9511652134000033,
+       "rise_target": 1.6657912529871728
+      },
+      "7": {
+       "detected": 56,
+       "search_start": 20,
+       "q": 0.7,
+       "argmin_0based": 19,
+       "profile_min": 0.9998993697403973,
+       "tail_mean": 1.9501498511336557,
+       "rise_target": 1.6650747067156781
+      },
+      "8": {
+       "detected": 56,
+       "search_start": 20,
+       "q": 0.7,
+       "argmin_0based": 19,
+       "profile_min": 0.9999089168637608,
+       "tail_mean": 1.9455818626157422,
+       "rise_target": 1.6618799788901477
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 0,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.03138787776445161,
+      "intercept": 2374.36072208357,
+      "r2": 0.0018159633158816302,
+      "spearman_rho": -0.5030030300035688,
+      "loocv_r2": -0.45425341159162946
+     }
+    },
+    "ab": {
+     "per_room": {
+      "1": {
+       "detected": 1249,
+       "search_start": 230,
+       "q": 0.7,
+       "argmin_0based": 229,
+       "profile_min": 1.2399075746434165,
+       "tail_mean": 2.043197674147085,
+       "rise_target": 1.8022106442959844
+      },
+      "2": {
+       "detected": 944,
+       "search_start": 237,
+       "q": 0.7,
+       "argmin_0based": 236,
+       "profile_min": 1.0113719207970508,
+       "tail_mean": 2.0187922453044447,
+       "rise_target": 1.7165661479522265
+      },
+      "3": {
+       "detected": 1070,
+       "search_start": 883,
+       "q": 0.7,
+       "argmin_0based": 882,
+       "profile_min": 1.2400433630848064,
+       "tail_mean": 2.0213385377040005,
+       "rise_target": 1.7869499853182422
+      },
+      "4": {
+       "detected": 3234,
+       "search_start": 1440,
+       "q": 0.7,
+       "argmin_0based": 1439,
+       "profile_min": 1.0031918626683711,
+       "tail_mean": 1.972459472352452,
+       "rise_target": 1.6816791894472276
+      },
+      "5": {
+       "detected": 6685,
+       "search_start": 4622,
+       "q": 0.7,
+       "argmin_0based": 4621,
+       "profile_min": 1.0031721379369885,
+       "tail_mean": 1.9694494054878506,
+       "rise_target": 1.679566225222592
+      },
+      "6": {
+       "detected": 3625,
+       "search_start": 1876,
+       "q": 0.7,
+       "argmin_0based": 1875,
+       "profile_min": 1.0032132734035653,
+       "tail_mean": 1.9543845162622828,
+       "rise_target": 1.6690331434046675
+      },
+      "7": {
+       "detected": 3845,
+       "search_start": 903,
+       "q": 0.7,
+       "argmin_0based": 902,
+       "profile_min": 1.0032181080139995,
+       "tail_mean": 1.94130617193427,
+       "rise_target": 1.6598797527581888
+      },
+      "8": {
+       "detected": 7285,
+       "search_start": 903,
+       "q": 0.7,
+       "argmin_0based": 902,
+       "profile_min": 1.0032162576857795,
+       "tail_mean": 1.9559335812291978,
+       "rise_target": 1.6701183841661722
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 0,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.23856081872155216,
+      "intercept": 1568.0033009219999,
+      "r2": 0.29627005920600313,
+      "spearman_rho": 0.7142857142857144,
+      "loocv_r2": -0.14295052775984907
+     }
+    }
+   }
+  },
+  "D2q90": {
+   "description": "Rise fraction q = 0.9: with m = finite profile minimum and M = tail mean, first sample at or after the argmin with (p - m)/(M - m) >= q.",
+   "tracks": {
+    "pra": {
+     "per_room": {
+      "1": {
+       "detected": 304,
+       "search_start": 20,
+       "q": 0.9,
+       "argmin_0based": 19,
+       "profile_min": 0.9999735997706909,
+       "tail_mean": 2.0437126985002614,
+       "rise_target": 1.9393387886273044
+      },
+      "2": {
+       "detected": 377,
+       "search_start": 20,
+       "q": 0.9,
+       "argmin_0based": 19,
+       "profile_min": 0.9999819391089299,
+       "tail_mean": 2.029661366831817,
+       "rise_target": 1.9266934240595281
+      },
+      "3": {
+       "detected": 290,
+       "search_start": 20,
+       "q": 0.9,
+       "argmin_0based": 19,
+       "profile_min": 0.9999839395328132,
+       "tail_mean": 2.012785421573675,
+       "rise_target": 1.911505273369589
+      },
+      "4": {
+       "detected": 3173,
+       "search_start": 2868,
+       "q": 0.9,
+       "argmin_0based": 2867,
+       "profile_min": 0.9999165722021265,
+       "tail_mean": 1.9662206502851607,
+       "rise_target": 1.8695902424768573
+      },
+      "5": {
+       "detected": 3335,
+       "search_start": 2825,
+       "q": 0.9,
+       "argmin_0based": 2824,
+       "profile_min": 0.9998719055983677,
+       "tail_mean": 1.966273378145416,
+       "rise_target": 1.8696332308907113
+      },
+      "6": {
+       "detected": 355,
+       "search_start": 20,
+       "q": 0.9,
+       "argmin_0based": 19,
+       "profile_min": 0.9999186786905684,
+       "tail_mean": 1.9511652134000033,
+       "rise_target": 1.8560405599290597
+      },
+      "7": {
+       "detected": 357,
+       "search_start": 20,
+       "q": 0.9,
+       "argmin_0based": 19,
+       "profile_min": 0.9998993697403973,
+       "tail_mean": 1.9501498511336557,
+       "rise_target": 1.85512480299433
+      },
+      "8": {
+       "detected": 355,
+       "search_start": 20,
+       "q": 0.9,
+       "argmin_0based": 19,
+       "profile_min": 0.9999089168637608,
+       "tail_mean": 1.9455818626157422,
+       "rise_target": 1.851014568040544
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 0,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.04518403568734266,
+      "intercept": 2352.8196538769967,
+      "r2": 0.0032148941858577418,
+      "spearman_rho": 0.22754898976351917,
+      "loocv_r2": -0.4529267567692974
+     }
+    },
+    "ab": {
+     "per_room": {
+      "1": {
+       "detected": 2959,
+       "search_start": 230,
+       "q": 0.9,
+       "argmin_0based": 229,
+       "profile_min": 1.2399075746434165,
+       "tail_mean": 2.043197674147085,
+       "rise_target": 1.9628686641967181
+      },
+      "2": {
+       "detected": 1829,
+       "search_start": 237,
+       "q": 0.9,
+       "argmin_0based": 236,
+       "profile_min": 1.0113719207970508,
+       "tail_mean": 2.0187922453044447,
+       "rise_target": 1.9180502128537054
+      },
+      "3": {
+       "detected": 2867,
+       "search_start": 883,
+       "q": 0.9,
+       "argmin_0based": 882,
+       "profile_min": 1.2400433630848064,
+       "tail_mean": 2.0213385377040005,
+       "rise_target": 1.943209020242081
+      },
+      "4": {
+       "detected": 5612,
+       "search_start": 1440,
+       "q": 0.9,
+       "argmin_0based": 1439,
+       "profile_min": 1.0031918626683711,
+       "tail_mean": 1.972459472352452,
+       "rise_target": 1.8755327113840439
+      },
+      "5": {
+       "detected": 7068,
+       "search_start": 4622,
+       "q": 0.9,
+       "argmin_0based": 4621,
+       "profile_min": 1.0031721379369885,
+       "tail_mean": 1.9694494054878506,
+       "rise_target": 1.8728216787327643
+      },
+      "6": {
+       "detected": 4010,
+       "search_start": 1876,
+       "q": 0.9,
+       "argmin_0based": 1875,
+       "profile_min": 1.0032132734035653,
+       "tail_mean": 1.9543845162622828,
+       "rise_target": 1.859267391976411
+      },
+      "7": {
+       "detected": 8330,
+       "search_start": 903,
+       "q": 0.9,
+       "argmin_0based": 902,
+       "profile_min": 1.0032181080139995,
+       "tail_mean": 1.94130617193427,
+       "rise_target": 1.8474973655422429
+      },
+      "8": {
+       "detected": 7327,
+       "search_start": 903,
+       "q": 0.9,
+       "argmin_0based": 902,
+       "profile_min": 1.0032162576857795,
+       "tail_mean": 1.9559335812291978,
+       "rise_target": 1.860661848874856
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 0,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.359450568725648,
+      "intercept": 603.7447937295789,
+      "r2": 0.6522906122009002,
+      "spearman_rho": 0.8095238095238096,
+      "loocv_r2": 0.38464161014929477
+     }
+    }
+   }
+  },
+  "D3": {
+   "description": "Peak-train re-sparsification, pra only: local maxima of abs(rir) (find_peaks, no height threshold, distance 1) kept at their positions, zeros elsewhere, then hfd_profile (window 50, kmax 5), moving_average_nan span 200, and the original fixed-start-1000 threshold rule.",
+   "tracks": {
+    "pra": {
+     "per_room": {
+      "1": {
+       "detected": 1784,
+       "search_start": 1000,
+       "n_peaks": 6140,
+       "tail_mean": 2.1835794336612593,
+       "tail_sd": 0.022292367697661755,
+       "threshold": 2.1389946982659356
+      },
+      "2": {
+       "detected": 1302,
+       "search_start": 1000,
+       "n_peaks": 9373,
+       "tail_mean": 2.16884220732013,
+       "tail_sd": 0.02651476939691561,
+       "threshold": 2.115812668526299
+      },
+      "3": {
+       "detected": 2881,
+       "search_start": 1000,
+       "n_peaks": 11982,
+       "tail_mean": 2.1775086797863934,
+       "tail_sd": 0.021184230163621053,
+       "threshold": 2.135140219459151
+      },
+      "4": {
+       "detected": 1028,
+       "search_start": 1000,
+       "n_peaks": 17916,
+       "tail_mean": 2.1362848232303318,
+       "tail_sd": 0.02525735825008769,
+       "threshold": 2.0857701067301564
+      },
+      "5": {
+       "detected": 1250,
+       "search_start": 1000,
+       "n_peaks": 25712,
+       "tail_mean": 2.146526505963647,
+       "tail_sd": 0.02524147915670191,
+       "threshold": 2.0960435476502433
+      },
+      "6": {
+       "detected": 1380,
+       "search_start": 1000,
+       "n_peaks": 27882,
+       "tail_mean": 2.14628184464657,
+       "tail_sd": 0.035383286197562834,
+       "threshold": 2.0755152722514443
+      },
+      "7": {
+       "detected": 2764,
+       "search_start": 1000,
+       "n_peaks": 24067,
+       "tail_mean": 2.1297058580257806,
+       "tail_sd": 0.03502457298819071,
+       "threshold": 2.0596567120493994
+      },
+      "8": {
+       "detected": 1964,
+       "search_start": 1000,
+       "n_peaks": 32108,
+       "tail_mean": 2.1461292487864267,
+       "tail_sd": 0.022506012548325193,
+       "threshold": 2.1011172236897764
+      }
+     },
+     "evaluation": {
+      "n": 8,
+      "rooms_used": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8
+      ],
+      "floor_pinned_count": 0,
+      "floor_pinned_tolerance_samples": 5,
+      "slope": 0.14701112183630136,
+      "intercept": 2137.331171035445,
+      "r2": 0.00919599559263018,
+      "spearman_rho": 0.0,
+      "loocv_r2": -1.5810663727542096
+     }
+    }
+   }
+  }
+ }
+}

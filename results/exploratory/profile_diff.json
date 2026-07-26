@@ -1,0 +1,410 @@
+{
+ "label": "EXPLORATORY follow-up analysis, not preregistered",
+ "description": "Cross-track comparison of pra (pyroomacoustics, band-limited sinc kernels) vs ab (Allen-Berkley port, integer-sample deltas) RIRs and their smoothed Higuchi FD profiles, rooms 1 to 8.",
+ "conventions": {
+  "rir_texture_segment": "first 2000 samples",
+  "near_zero_threshold": 1e-09,
+  "peak_height": "5 percent of segment absolute maximum",
+  "acf_fwhm": "2 * L - 1 where L is first lag with normalized autocorrelation below 0.5",
+  "profile_indices": "0-based indices into the smoothed profile array",
+  "crossings": "MATLAB 1-based sample numbers from results/rooms jsons"
+ },
+ "rooms": {
+  "1": {
+   "name": "E. Studio",
+   "rir_texture": {
+    "pra": {
+     "frac_exact_zero": 0.0,
+     "frac_near_zero": 0.0,
+     "n_peaks_above_5pct": 33,
+     "acf_fwhm_samples": 1
+    },
+    "ab": {
+     "frac_exact_zero": 0.0645,
+     "frac_near_zero": 0.0645,
+     "n_peaks_above_5pct": 33,
+     "acf_fwhm_samples": 1
+    }
+   },
+   "profile_shape": {
+    "pra": {
+     "first_finite_index": 0,
+     "first_finite_value": 0.999974648922885,
+     "min_value": 0.9999735997706909,
+     "min_index": 19,
+     "tail_mean": 2.0437126985002614,
+     "tail_sd": 0.03427761461963165,
+     "rise_span": 1.0437390987295705,
+     "rise50_sample": 39,
+     "rise90_sample": 303
+    },
+    "ab": {
+     "first_finite_index": 40,
+     "first_finite_value": 2.1652043981200437,
+     "min_value": 1.2399075746434165,
+     "min_index": 229,
+     "tail_mean": 2.043197674147085,
+     "tail_sd": 0.031961912487489266,
+     "rise_span": 0.8032900995036685,
+     "rise50_sample": 1164,
+     "rise90_sample": 2958
+    }
+   },
+   "criterion3_crossing": {
+    "pra": 1070,
+    "ab": 4032
+   },
+   "tmp50_samples_reconciled": 1654.8
+  },
+  "2": {
+   "name": "EN-111",
+   "rir_texture": {
+    "pra": {
+     "frac_exact_zero": 0.0,
+     "frac_near_zero": 0.0,
+     "n_peaks_above_5pct": 37,
+     "acf_fwhm_samples": 1
+    },
+    "ab": {
+     "frac_exact_zero": 0.0645,
+     "frac_near_zero": 0.065,
+     "n_peaks_above_5pct": 36,
+     "acf_fwhm_samples": 1
+    }
+   },
+   "profile_shape": {
+    "pra": {
+     "first_finite_index": 0,
+     "first_finite_value": 0.999982623294365,
+     "min_value": 0.9999819391089299,
+     "min_index": 19,
+     "tail_mean": 2.029661366831817,
+     "tail_sd": 0.03693959646083358,
+     "rise_span": 1.0296794277228871,
+     "rise50_sample": 38,
+     "rise90_sample": 376
+    },
+    "ab": {
+     "first_finite_index": 40,
+     "first_finite_value": 2.165204398120045,
+     "min_value": 1.0113719207970508,
+     "min_index": 236,
+     "tail_mean": 2.0187922453044447,
+     "tail_sd": 0.049947567019918045,
+     "rise_span": 1.0074203245073938,
+     "rise50_sample": 535,
+     "rise90_sample": 1828
+    }
+   },
+   "criterion3_crossing": {
+    "pra": 1000,
+    "ab": 1829
+   },
+   "tmp50_samples_reconciled": 1324.0
+  },
+  "3": {
+   "name": "EN-190",
+   "rir_texture": {
+    "pra": {
+     "frac_exact_zero": 0.0,
+     "frac_near_zero": 0.0,
+     "n_peaks_above_5pct": 43,
+     "acf_fwhm_samples": 1
+    },
+    "ab": {
+     "frac_exact_zero": 0.0645,
+     "frac_near_zero": 0.0645,
+     "n_peaks_above_5pct": 42,
+     "acf_fwhm_samples": 1
+    }
+   },
+   "profile_shape": {
+    "pra": {
+     "first_finite_index": 0,
+     "first_finite_value": 0.999984556280885,
+     "min_value": 0.9999839395328132,
+     "min_index": 19,
+     "tail_mean": 2.012785421573675,
+     "tail_sd": 0.032394505898754165,
+     "rise_span": 1.012801482040862,
+     "rise50_sample": 38,
+     "rise90_sample": 289
+    },
+    "ab": {
+     "first_finite_index": 40,
+     "first_finite_value": 2.165204398120044,
+     "min_value": 1.2400433630848064,
+     "min_index": 882,
+     "tail_mean": 2.0213385377040005,
+     "tail_sd": 0.032313403286167386,
+     "rise_span": 0.7812951746191941,
+     "rise50_sample": 1035,
+     "rise90_sample": 2866
+    }
+   },
+   "criterion3_crossing": {
+    "pra": 1044,
+    "ab": 2878
+   },
+   "tmp50_samples_reconciled": 992.3
+  },
+  "4": {
+   "name": "H-0104",
+   "rir_texture": {
+    "pra": {
+     "frac_exact_zero": 0.0,
+     "frac_near_zero": 0.0,
+     "n_peaks_above_5pct": 8,
+     "acf_fwhm_samples": 1
+    },
+    "ab": {
+     "frac_exact_zero": 0.0645,
+     "frac_near_zero": 0.066,
+     "n_peaks_above_5pct": 8,
+     "acf_fwhm_samples": 1
+    }
+   },
+   "profile_shape": {
+    "pra": {
+     "first_finite_index": 0,
+     "first_finite_value": 0.9999344941277852,
+     "min_value": 0.9999165722021265,
+     "min_index": 2867,
+     "tail_mean": 1.9662206502851607,
+     "tail_sd": 0.06513589482644751,
+     "rise_span": 0.9663040780830342,
+     "rise50_sample": 3099,
+     "rise90_sample": 3172
+    },
+    "ab": {
+     "first_finite_index": 40,
+     "first_finite_value": 2.165204398120044,
+     "min_value": 1.0031918626683711,
+     "min_index": 1439,
+     "tail_mean": 1.972459472352452,
+     "tail_sd": 0.05911365506283733,
+     "rise_span": 0.9692676096840809,
+     "rise50_sample": 3188,
+     "rise90_sample": 5611
+    }
+   },
+   "criterion3_crossing": {
+    "pra": 1091,
+    "ab": 5237
+   },
+   "tmp50_samples_reconciled": 2645.7
+  },
+  "5": {
+   "name": "HE-101",
+   "rir_texture": {
+    "pra": {
+     "frac_exact_zero": 0.0,
+     "frac_near_zero": 0.0,
+     "n_peaks_above_5pct": 8,
+     "acf_fwhm_samples": 1
+    },
+    "ab": {
+     "frac_exact_zero": 0.0645,
+     "frac_near_zero": 0.15,
+     "n_peaks_above_5pct": 8,
+     "acf_fwhm_samples": 1
+    }
+   },
+   "profile_shape": {
+    "pra": {
+     "first_finite_index": 0,
+     "first_finite_value": 0.99992883786418,
+     "min_value": 0.9998719055983677,
+     "min_index": 2824,
+     "tail_mean": 1.966273378145416,
+     "tail_sd": 0.045311588398159505,
+     "rise_span": 0.9664014725470483,
+     "rise50_sample": 3262,
+     "rise90_sample": 3334
+    },
+    "ab": {
+     "first_finite_index": 40,
+     "first_finite_value": 2.165204398120044,
+     "min_value": 1.0031721379369885,
+     "min_index": 4621,
+     "tail_mean": 1.9694494054878506,
+     "tail_sd": 0.051981410289084644,
+     "rise_span": 0.9662772675508622,
+     "rise50_sample": 5161,
+     "rise90_sample": 7067
+    }
+   },
+   "criterion3_crossing": {
+    "pra": 3337,
+    "ab": 7067
+   },
+   "tmp50_samples_reconciled": 2326.4
+  },
+  "6": {
+   "name": "Teldex",
+   "rir_texture": {
+    "pra": {
+     "frac_exact_zero": 0.0,
+     "frac_near_zero": 0.0,
+     "n_peaks_above_5pct": 6,
+     "acf_fwhm_samples": 1
+    },
+    "ab": {
+     "frac_exact_zero": 0.0645,
+     "frac_near_zero": 0.214,
+     "n_peaks_above_5pct": 6,
+     "acf_fwhm_samples": 1
+    }
+   },
+   "profile_shape": {
+    "pra": {
+     "first_finite_index": 0,
+     "first_finite_value": 0.999925368393591,
+     "min_value": 0.9999186786905684,
+     "min_index": 19,
+     "tail_mean": 1.9511652134000033,
+     "tail_sd": 0.060548687664980186,
+     "rise_span": 0.9512465347094349,
+     "rise50_sample": 35,
+     "rise90_sample": 354
+    },
+    "ab": {
+     "first_finite_index": 40,
+     "first_finite_value": 2.1652043981200446,
+     "min_value": 1.0032132734035653,
+     "min_index": 1875,
+     "tail_mean": 1.9543845162622828,
+     "tail_sd": 0.07461441966145092,
+     "rise_span": 0.9511712428587176,
+     "rise50_sample": 3565,
+     "rise90_sample": 4009
+    }
+   },
+   "criterion3_crossing": {
+    "pra": 1542,
+    "ab": 3657
+   },
+   "tmp50_samples_reconciled": 3087.4
+  },
+  "7": {
+   "name": "UoA concert hall",
+   "rir_texture": {
+    "pra": {
+     "frac_exact_zero": 0.0,
+     "frac_near_zero": 0.0,
+     "n_peaks_above_5pct": 4,
+     "acf_fwhm_samples": 1
+    },
+    "ab": {
+     "frac_exact_zero": 0.0645,
+     "frac_near_zero": 0.434,
+     "n_peaks_above_5pct": 4,
+     "acf_fwhm_samples": 1
+    }
+   },
+   "profile_shape": {
+    "pra": {
+     "first_finite_index": 0,
+     "first_finite_value": 0.9999093071665662,
+     "min_value": 0.9998993697403973,
+     "min_index": 19,
+     "tail_mean": 1.9501498511336557,
+     "tail_sd": 0.04806715459390028,
+     "rise_span": 0.9502504813932584,
+     "rise50_sample": 35,
+     "rise90_sample": 356
+    },
+    "ab": {
+     "first_finite_index": 40,
+     "first_finite_value": 2.165204398120044,
+     "min_value": 1.0032181080139995,
+     "min_index": 902,
+     "tail_mean": 1.94130617193427,
+     "tail_sd": 0.0623876301811047,
+     "rise_span": 0.9380880639202704,
+     "rise50_sample": 3800,
+     "rise90_sample": 8329
+    }
+   },
+   "criterion3_crossing": {
+    "pra": 3830,
+    "ab": 8039
+   },
+   "tmp50_samples_reconciled": 4310.8
+  },
+  "8": {
+   "name": "TUB Audimax",
+   "rir_texture": {
+    "pra": {
+     "frac_exact_zero": 0.0,
+     "frac_near_zero": 0.0,
+     "n_peaks_above_5pct": 4,
+     "acf_fwhm_samples": 1
+    },
+    "ab": {
+     "frac_exact_zero": 0.0645,
+     "frac_near_zero": 0.431,
+     "n_peaks_above_5pct": 4,
+     "acf_fwhm_samples": 1
+    }
+   },
+   "profile_shape": {
+    "pra": {
+     "first_finite_index": 0,
+     "first_finite_value": 0.9999171697352532,
+     "min_value": 0.9999089168637608,
+     "min_index": 19,
+     "tail_mean": 1.9455818626157422,
+     "tail_sd": 0.03463036015302625,
+     "rise_span": 0.9456729457519814,
+     "rise50_sample": 35,
+     "rise90_sample": 354
+    },
+    "ab": {
+     "first_finite_index": 40,
+     "first_finite_value": 2.165204398120044,
+     "min_value": 1.0032162576857795,
+     "min_index": 902,
+     "tail_mean": 1.9559335812291978,
+     "tail_sd": 0.03807524728825853,
+     "rise_span": 0.9527173235434183,
+     "rise50_sample": 4672,
+     "rise90_sample": 7326
+    }
+   },
+   "criterion3_crossing": {
+    "pra": 3807,
+    "ab": 7436
+   },
+   "tmp50_samples_reconciled": 2867.3
+  }
+ },
+ "cross_track": {
+  "model": "ab_crossing = a * pra_crossing + b, Criterion III (k=2)",
+  "a": 1.5809055832488823,
+  "b": 1717.58471781193,
+  "r2": 0.825425564500772,
+  "spearman_rho": 0.9285714285714287,
+  "spearman_p": 0.0008629681828999767,
+  "pra_crossings": [
+   1070,
+   1000,
+   1044,
+   1091,
+   3337,
+   1542,
+   3830,
+   3807
+  ],
+  "ab_crossings": [
+   4032,
+   1829,
+   2878,
+   5237,
+   7067,
+   3657,
+   8039,
+   7436
+  ]
+ }
+}
