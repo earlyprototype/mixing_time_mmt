@@ -120,3 +120,19 @@ like the dense-from-t0 pyroomacoustics synthesis. The instrument
 deflects on real data; whether it points at perceptual mixing time is
 exactly what H2 (labeled data) must decide.
 results/exploratory/measured_feasibility.md.
+
+## Round 7 (kernel track, author-suggested)
+
+analysis/exploratory/kernel_track.py: third rendering, AB spike train
+convolved with a causal measurement-like bandpass pulse (100 Hz to 16
+kHz, 90 percent of energy within 0.09 ms), replacing both the bare
+spikes and the ideal sinc. Result: the profile RISE survives in all
+eight rooms (12.8 to 24.3 times the tail SD), confirming the texture
+reasoning, but the TIMING information at window 50 does not: crossings
+compress to 852 to 2803 samples, the floor-free detections are nearly
+constant (852 for five rooms), and the honest floor-free regression is
+useless (R2 0.39 with LOOCV -0.94 and negative Spearman). The
+fixed-start numbers (R2 0.68) are partially floor-inflated again. Even
+a 0.09 ms kernel is enough to accelerate window filling and destroy
+most of the room-dependence the 51-sample feature reads from bare
+spikes. results/exploratory/kernel_track.md.
