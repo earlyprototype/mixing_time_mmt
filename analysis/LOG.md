@@ -97,3 +97,26 @@ the fourth decimal everywhere; integer crossings never reproduced; beta
 = sqrt(1 - alpha) confirmed in all rooms; best-fit lengths 0.55 to 0.85
 of RT*fs. Synthesis in results/reverse/SYNTHESIS.md, folded into
 REPORT.md.
+
+## Round 6 (follow-up groundwork, after PR #1 merged)
+
+Branch restarted from merged main. Committed BEFORE any groundwork ran:
+analysis/PREREGISTRATION_FOLLOWUP.md (window-scale follow-up, frozen W*
+procedure, floor-free detection, LOOCV primary) and
+docs/ARCHIVE_CHECKLIST.md (ranked list for the author's archive hunt).
+
+Window sweep on ISM data (hypothesis-generating): W* procedure returned
+None. No window rescues the pyroomacoustics track under floor-free
+detection (LOOCV deeply negative everywhere); the AB track degrades
+monotonically above W=50; the earlier W=100 74.7 percent point was a
+fixed-start floor artifact. results/exploratory/window_sweep.md.
+
+Measured-BRIR feasibility (IoSR RealRoomBRIRs, Rooms A to D, 48 kHz,
+fetched via raw.githubusercontent, not committed, provenance recorded):
+H1 PASSES at every window in all four rooms, rises 12 to 194 times the
+tail SD. Real measured rooms have true pre-arrival silence and sparse
+strong early reflections, so their profiles rise like the AB track, not
+like the dense-from-t0 pyroomacoustics synthesis. The instrument
+deflects on real data; whether it points at perceptual mixing time is
+exactly what H2 (labeled data) must decide.
+results/exploratory/measured_feasibility.md.

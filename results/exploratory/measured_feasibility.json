@@ -1,0 +1,375 @@
+{
+ "note": "H1 feasibility only; no perceptual labels exist for this corpus, H2 not testable here.",
+ "corpus": "IoSR RealRoomBRIRs Rooms A to D, 48 kHz, frontal azimuth, left ear",
+ "provenance": "https://raw.githubusercontent.com/IoSR-Surrey/RealRoomBRIRs/master/",
+ "windows": [
+  50,
+  75,
+  100,
+  150,
+  200,
+  300,
+  500,
+  750,
+  1000,
+  1500,
+  2000
+ ],
+ "rise_threshold": 3.0,
+ "rooms": {
+  "A": {
+   "file": "UniS_Room_A_BRIR_48k.sofa",
+   "fs": 48000.0,
+   "azimuth_used": 0.0,
+   "n_samples": 18776,
+   "windows": {
+    "50": {
+     "tail_mean": 2.0196957776973554,
+     "tail_sd": 0.0621369182742445,
+     "profile_min": 1.242640654920251,
+     "rise_over_tailsd": 12.505530437598004,
+     "passes": true
+    },
+    "75": {
+     "tail_mean": 2.019467505010857,
+     "tail_sd": 0.05219707183694247,
+     "profile_min": 1.2526998512221326,
+     "rise_over_tailsd": 14.68985954200681,
+     "passes": true
+    },
+    "100": {
+     "tail_mean": 2.0193246815740507,
+     "tail_sd": 0.04605575269175055,
+     "profile_min": 1.261194043985597,
+     "rise_over_tailsd": 16.461149656213284,
+     "passes": true
+    },
+    "150": {
+     "tail_mean": 2.0189399489651065,
+     "tail_sd": 0.04043774489090147,
+     "profile_min": 1.2696919353074918,
+     "rise_over_tailsd": 18.528432178377887,
+     "passes": true
+    },
+    "200": {
+     "tail_mean": 2.018380512719711,
+     "tail_sd": 0.04004239677089438,
+     "profile_min": 1.2720248489313235,
+     "rise_over_tailsd": 18.63913561565054,
+     "passes": true
+    },
+    "300": {
+     "tail_mean": 2.018630563023532,
+     "tail_sd": 0.042253808269247316,
+     "profile_min": 1.2755524273452465,
+     "rise_over_tailsd": 17.586063034680457,
+     "passes": true
+    },
+    "500": {
+     "tail_mean": 2.0223971380651644,
+     "tail_sd": 0.04468172310400492,
+     "profile_min": 1.2783519044023706,
+     "rise_over_tailsd": 16.65211594304212,
+     "passes": true
+    },
+    "750": {
+     "tail_mean": 2.024840853541152,
+     "tail_sd": 0.04598776349531555,
+     "profile_min": 1.2799801145738456,
+     "rise_over_tailsd": 16.196933322125574,
+     "passes": true
+    },
+    "1000": {
+     "tail_mean": 2.0292985880533423,
+     "tail_sd": 0.04406649292510437,
+     "profile_min": 1.2804348415702407,
+     "rise_over_tailsd": 16.99394929739188,
+     "passes": true
+    },
+    "1500": {
+     "tail_mean": 2.035878347871597,
+     "tail_sd": 0.03975430461313161,
+     "profile_min": 1.2811264745978406,
+     "rise_over_tailsd": 18.985412538808376,
+     "passes": true
+    },
+    "2000": {
+     "tail_mean": 2.0395777604884024,
+     "tail_sd": 0.03682221376034525,
+     "profile_min": 1.2814717910623585,
+     "rise_over_tailsd": 20.588277890083482,
+     "passes": true
+    }
+   }
+  },
+  "B": {
+   "file": "UniS_Room_B_BRIR_48k.sofa",
+   "fs": 48000.0,
+   "azimuth_used": 0.0,
+   "n_samples": 48001,
+   "windows": {
+    "50": {
+     "tail_mean": 2.1288233673914534,
+     "tail_sd": 0.031230198565908567,
+     "profile_min": 1.2792574804095134,
+     "rise_over_tailsd": 27.20334567162634,
+     "passes": true
+    },
+    "75": {
+     "tail_mean": 2.1281047576823475,
+     "tail_sd": 0.025256540652043188,
+     "profile_min": 1.3036319587156695,
+     "rise_over_tailsd": 32.643932133278135,
+     "passes": true
+    },
+    "100": {
+     "tail_mean": 2.127823781296653,
+     "tail_sd": 0.02202474275948306,
+     "profile_min": 1.2681541478377558,
+     "rise_over_tailsd": 39.03199428237383,
+     "passes": true
+    },
+    "150": {
+     "tail_mean": 2.1274556152899944,
+     "tail_sd": 0.018249140341518113,
+     "profile_min": 1.3127380665706956,
+     "rise_over_tailsd": 44.64416040824441,
+     "passes": true
+    },
+    "200": {
+     "tail_mean": 2.127416185655281,
+     "tail_sd": 0.014985962734196777,
+     "profile_min": 1.3166658693504025,
+     "rise_over_tailsd": 54.10064943340682,
+     "passes": true
+    },
+    "300": {
+     "tail_mean": 2.1278847056897936,
+     "tail_sd": 0.01283970811900982,
+     "profile_min": 1.3223907659807896,
+     "rise_over_tailsd": 62.73459896774683,
+     "passes": true
+    },
+    "500": {
+     "tail_mean": 2.1289100267634944,
+     "tail_sd": 0.011211257013418288,
+     "profile_min": 1.3261699879347515,
+     "rise_over_tailsd": 71.60125201553909,
+     "passes": true
+    },
+    "750": {
+     "tail_mean": 2.130549320265129,
+     "tail_sd": 0.01137854393850136,
+     "profile_min": 1.3334945088103851,
+     "rise_over_tailsd": 70.04892855910718,
+     "passes": true
+    },
+    "1000": {
+     "tail_mean": 2.1320016996889883,
+     "tail_sd": 0.011777296887559822,
+     "profile_min": 1.3355729258098916,
+     "rise_over_tailsd": 67.62407210098883,
+     "passes": true
+    },
+    "1500": {
+     "tail_mean": 2.1347360159541116,
+     "tail_sd": 0.011240511711317546,
+     "profile_min": 1.3422258807317446,
+     "rise_over_tailsd": 70.50480935173312,
+     "passes": true
+    },
+    "2000": {
+     "tail_mean": 2.1366813683893517,
+     "tail_sd": 0.010422480190060462,
+     "profile_min": 1.345758560107149,
+     "rise_over_tailsd": 75.88623761899562,
+     "passes": true
+    }
+   }
+  },
+  "C": {
+   "file": "UniS_Room_C_BRIR_48k.sofa",
+   "fs": 48000.0,
+   "azimuth_used": 0.0,
+   "n_samples": 48001,
+   "windows": {
+    "50": {
+     "tail_mean": 2.120122891155698,
+     "tail_sd": 0.02258900535260964,
+     "profile_min": 1.0698158298070666,
+     "rise_over_tailsd": 46.496383747471754,
+     "passes": true
+    },
+    "75": {
+     "tail_mean": 2.1196555112763047,
+     "tail_sd": 0.018034379314495263,
+     "profile_min": 1.0702406782037601,
+     "rise_over_tailsd": 58.18968397925787,
+     "passes": true
+    },
+    "100": {
+     "tail_mean": 2.11943670627585,
+     "tail_sd": 0.015272034863547614,
+     "profile_min": 1.0689648007246109,
+     "rise_over_tailsd": 68.78401699164404,
+     "passes": true
+    },
+    "150": {
+     "tail_mean": 2.1190981947836054,
+     "tail_sd": 0.01196471591975199,
+     "profile_min": 1.183956348125714,
+     "rise_over_tailsd": 78.1582991965659,
+     "passes": true
+    },
+    "200": {
+     "tail_mean": 2.11865820966274,
+     "tail_sd": 0.01038805388747914,
+     "profile_min": 1.1923083628645783,
+     "rise_over_tailsd": 89.17453228796815,
+     "passes": true
+    },
+    "300": {
+     "tail_mean": 2.1182741371260594,
+     "tail_sd": 0.008326043275428185,
+     "profile_min": 1.1977247714847354,
+     "rise_over_tailsd": 110.56264484692852,
+     "passes": true
+    },
+    "500": {
+     "tail_mean": 2.1179838035831207,
+     "tail_sd": 0.0057452812172855165,
+     "profile_min": 1.202523543598438,
+     "rise_over_tailsd": 159.34124464271426,
+     "passes": true
+    },
+    "750": {
+     "tail_mean": 2.118063821442414,
+     "tail_sd": 0.004751389361555314,
+     "profile_min": 1.2081801888108281,
+     "rise_over_tailsd": 191.4984362245037,
+     "passes": true
+    },
+    "1000": {
+     "tail_mean": 2.1176860995257214,
+     "tail_sd": 0.004697992188365548,
+     "profile_min": 1.2125126533643555,
+     "rise_over_tailsd": 192.67240341586853,
+     "passes": true
+    },
+    "1500": {
+     "tail_mean": 2.117640216592692,
+     "tail_sd": 0.00460590271445825,
+     "profile_min": 1.2240059142213027,
+     "rise_over_tailsd": 194.01936119193505,
+     "passes": true
+    },
+    "2000": {
+     "tail_mean": 2.1180531308385904,
+     "tail_sd": 0.004541547702685821,
+     "profile_min": 1.2360991466388627,
+     "rise_over_tailsd": 194.19678971513386,
+     "passes": true
+    }
+   }
+  },
+  "D": {
+   "file": "UniS_Room_D_BRIR_48k.sofa",
+   "fs": 48000.0,
+   "azimuth_used": 0.0,
+   "n_samples": 49047,
+   "windows": {
+    "50": {
+     "tail_mean": 2.1043160398381904,
+     "tail_sd": 0.025306168890615027,
+     "profile_min": 1.085387175980109,
+     "rise_over_tailsd": 40.264050566577794,
+     "passes": true
+    },
+    "75": {
+     "tail_mean": 2.1039439216099773,
+     "tail_sd": 0.02161598669996526,
+     "profile_min": 1.0976192563861313,
+     "rise_over_tailsd": 46.55464861224509,
+     "passes": true
+    },
+    "100": {
+     "tail_mean": 2.1038664527770448,
+     "tail_sd": 0.01984569692819729,
+     "profile_min": 1.1093071738631028,
+     "rise_over_tailsd": 50.11460582675965,
+     "passes": true
+    },
+    "150": {
+     "tail_mean": 2.103932812775592,
+     "tail_sd": 0.017791615920059272,
+     "profile_min": 1.1179386731793317,
+     "rise_over_tailsd": 55.419032426649615,
+     "passes": true
+    },
+    "200": {
+     "tail_mean": 2.104297735895169,
+     "tail_sd": 0.01610052598691698,
+     "profile_min": 1.119411235506357,
+     "rise_over_tailsd": 61.17107609957057,
+     "passes": true
+    },
+    "300": {
+     "tail_mean": 2.1049240358813983,
+     "tail_sd": 0.0137756824674034,
+     "profile_min": 1.123473927995791,
+     "rise_over_tailsd": 71.24511690857828,
+     "passes": true
+    },
+    "500": {
+     "tail_mean": 2.1055514189006312,
+     "tail_sd": 0.012489452589737677,
+     "profile_min": 1.126726788865539,
+     "rise_over_tailsd": 78.3721002183372,
+     "passes": true
+    },
+    "750": {
+     "tail_mean": 2.105871343517382,
+     "tail_sd": 0.012045141317607604,
+     "profile_min": 1.130379010816615,
+     "rise_over_tailsd": 80.98637508509685,
+     "passes": true
+    },
+    "1000": {
+     "tail_mean": 2.1054916761967393,
+     "tail_sd": 0.012253208625692182,
+     "profile_min": 1.1309885391684131,
+     "rise_over_tailsd": 79.53044519172028,
+     "passes": true
+    },
+    "1500": {
+     "tail_mean": 2.104365281905325,
+     "tail_sd": 0.013412027727394464,
+     "profile_min": 1.1359943282775076,
+     "rise_over_tailsd": 72.201681454169,
+     "passes": true
+    },
+    "2000": {
+     "tail_mean": 2.1039591873347767,
+     "tail_sd": 0.014124028577637627,
+     "profile_min": 1.139876104175594,
+     "rise_over_tailsd": 68.25836395471485,
+     "passes": true
+    }
+   }
+  }
+ },
+ "per_window_pass_count": {
+  "50": 4,
+  "75": 4,
+  "100": 4,
+  "150": 4,
+  "200": 4,
+  "300": 4,
+  "500": 4,
+  "750": 4,
+  "1000": 4,
+  "1500": 4,
+  "2000": 4
+ },
+ "h1_pass": true
+}
