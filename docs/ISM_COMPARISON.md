@@ -83,11 +83,20 @@ spike-sparsity meter, the AB rendering preserves spike sparsity, the
 band-limited rendering erases it, and the mixing-time information rides
 on the sparsity.
 
-This also explains the practical implication in REPORT.md: measured
-BRIRs are band-limited like the pyroomacoustics track, so the method as
-specified in 2011 (fixed constants, fixed start) would underperform on
-real measurements for the same reason it underperforms on
-pyroomacoustics. The baseline detections do rank the rooms plausibly
+CORRECTION (added after the measured-BRIR feasibility check,
+results/exploratory/measured_feasibility.md): the inference that
+measured BRIRs would behave like the pyroomacoustics track because both
+are band-limited turned out to be WRONG. Real rooms have true
+pre-arrival silence and sparse, strong early reflections, so measured
+HFD profiles exhibit a large rise (12 to 194 times the tail SD on the
+IoSR rooms at every window tested), behaving like the AB track in the
+early region rather than the dense-from-the-first-sample synthesis.
+pyroomacoustics' early density is a property of its synthetic onset,
+not of band-limiting per se. Whether the measured-data rise lands at
+perceptually meaningful times remains untested (H2 in
+analysis/PREREGISTRATION_FOLLOWUP.md).
+
+The original (superseded) claim continued: The baseline detections do rank the rooms plausibly
 (Spearman 0.86 against tmp50), but Section 6 shows that ranking is
 mostly an artifact of how fast each room's profile saturates past the
 fixed search start, not a readable mixing-time signal. A precise
@@ -133,9 +142,13 @@ variants reported, none endorsed, n = 8, post-hoc) is blunt:
   a modest, exploratory-only observation.
 
 Conclusion for the rendering question: the mixing-time information the
-2011 method reads is carried by the spike-sparsity texture of the AB
-rendering itself. Once that texture is gone (band-limited rendering, and
-by extension measured RIRs), no affine rescale, re-referencing, or
-re-sparsification of the same HFD feature recovers it. A follow-up would
-need a genuinely different feature, not new constants on this one, and
-would have to be pre-registered on measured BRIRs to count.
+2011 method reads is carried by the spike-sparsity texture of the
+signal. Once that texture is gone, as in the pyroomacoustics synthesis,
+no affine rescale, re-referencing, or re-sparsification of the same HFD
+feature recovers it. The later measured-BRIR check (see the correction
+in Section 4) showed real rooms DO retain early sparsity, so the
+follow-up question is not whether the feature deflects on measured data
+(it does) but whether its crossing times track perception, which is
+exactly what the pre-registered H2 in
+analysis/PREREGISTRATION_FOLLOWUP.md will decide when labeled data
+exists.
