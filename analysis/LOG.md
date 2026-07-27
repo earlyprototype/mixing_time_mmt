@@ -107,8 +107,7 @@ docs/ARCHIVE_CHECKLIST.md (ranked list for the author's archive hunt).
 
 Window sweep on ISM data (hypothesis-generating): W* procedure returned
 None. No window rescues the pyroomacoustics track under floor-free
-detection (LOOCV deeply negative everywhere); the AB track degrades
-monotonically above W=50; the earlier W=100 74.7 percent point was a
+detection (LOOCV deeply negative everywhere); the AB track degrades sharply above W=50 and stays near zero; the earlier W=100 74.7 percent point was a
 fixed-start floor artifact. results/exploratory/window_sweep.md.
 
 Measured-BRIR feasibility (IoSR RealRoomBRIRs, Rooms A to D, 48 kHz,
@@ -136,3 +135,21 @@ fixed-start numbers (R2 0.68) are partially floor-inflated again. Even
 a 0.09 ms kernel is enough to accelerate window filling and destroy
 most of the room-dependence the 51-sample feature reads from bare
 spikes. results/exploratory/kernel_track.md.
+
+## Round 8 (CodeRabbit review of PR 2, amended reruns)
+
+Review round on the phase 2 PR: 8 actionable comments, all addressed.
+Substantive: the pre-registration's "after the direct sound" onset was
+under-specified and unimplemented (some floor-free detections landed at
+sample 1), fixed by Amendment 1 (onset = first sample at 5 percent of
+peak absolute amplitude, argmin restricted to at or after onset) and
+all three groundwork scripts re-run under the amended rule. Verdicts
+unchanged: W* still None, H1 still passes 4 of 4 rooms at every window,
+and the kernel track's floor-free result is starker (rooms 1 to 3
+detect nothing, rooms 4 to 8 detect the identical sample 852, zero
+between-room information). Also fixed: kernel order labeling (4th order
+prototype, 8th order realized), full convolution tail retained, atomic
+checksummed downloads, figures directory creation, frontal azimuth
+tolerance assert, order-independent ground truth lookup, per-cell n
+columns in the sweep table, W* metric choice justified in the
+amendment, markdown and gitignore nits.

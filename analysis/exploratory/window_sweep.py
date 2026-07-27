@@ -56,9 +56,20 @@ def ols_stats(x, y):
     return float(coef[0]), float(coef[1]), float(r2), float(loocv), float(rho)
 
 
-def detect_floorfree(smoothed, k=K, tail_frac=TAIL):
-    """Min-referenced start: search from the argmin over finite samples."""
+def onset_index(rir, frac=0.05):
+    """Onset per PREREGISTRATION_FOLLOWUP.md Amendment 1: first sample
+    whose absolute amplitude reaches frac of the peak absolute
+    amplitude."""
+    a = np.abs(np.asarray(rir, float))
+    return int(np.argmax(a >= frac * a.max()))
+
+
+def detect_floorfree(smoothed, rir, k=K, tail_frac=TAIL):
+    """Min-referenced start: argmin over finite samples at or after the
+    onset (Amendment 1), then first crossing at or after the argmin."""
+    onset = onset_index(rir)
     finite = np.isfinite(smoothed)
+    finite[:onset] = False
     if finite.sum() < 100:
         return None
     idx = np.arange(smoothed.size)[finite]
@@ -69,8 +80,9 @@ def detect_floorfree(smoothed, k=K, tail_frac=TAIL):
 
 def main():
     gt = json.loads((ROOT / "inputs/ground_truth.json").read_text())
-    y = np.array([r["tmp50_samples_reconciled"] for r in gt["rooms"]
-                  if r["room"] in ROOMS], float)
+    by_room = {r["room"]: r["tmp50_samples_reconciled"]
+               for r in gt["rooms"]}
+    y = np.array([by_room[n] for n in ROOMS], float)
 
     out = {"note": "HYPOTHESIS-GENERATING (ISM data, not measured). "
                    "See analysis/PREREGISTRATION_FOLLOWUP.md.",
@@ -88,13 +100,13 @@ def main():
             for n in ROOMS:
                 prof = hfd_profile(rirs[n], window=W, kmax=5)
                 sm = moving_average_nan(prof, span=4 * W)
-                det_ff.append(detect_floorfree(sm))
+                det_ff.append(detect_floorfree(sm, rirs[n]))
                 det_fs.append(detect_crossing(sm, K, tail_frac=TAIL,
                                               start=1000))
                 m, s = tail_stats(sm, TAIL)
                 finite = sm[np.isfinite(sm)]
-                rises.append(float((m - finite.min()) / s) if s > 0
-                             else np.nan)
+                rises.append(float((m - finite.min()) / s)
+                             if s > 0 and finite.size else np.nan)
             cell = {"track": track, "W": W,
                     "elapsed_s": round(time.time() - t0, 1),
                     "detect_floorfree": det_ff,
@@ -174,17 +186,18 @@ def main():
     L = ["# Window-scale sweep (HYPOTHESIS-GENERATING, ISM data)\n\n",
          "Grid and rules per analysis/PREREGISTRATION_FOLLOWUP.md. ",
          f"Frozen W* = {wstar}.\n\n",
-         "| track | W | floor-free R2 | LOOCV R2 | Spearman | "
-         "fixed-start R2 |\n|---|---|---|---|---|---|\n"]
+         "| track | W | n (ff) | floor-free R2 | LOOCV R2 | Spearman | "
+         "n (fs) | fixed-start R2 |\n|---|---|---|---|---|---|---|---|\n"]
     for track in ("pra", "ab"):
         for W in WINDOWS:
             c = detections[(track, W)]
             ff = c["floorfree"]
             fs = c["fixedstart"]
-            L.append(f"| {track} | {W} | "
+            L.append(f"| {track} | {W} | {ff.get('n', 0)} | "
                      f"{ff.get('r2', float('nan')):.3f} | "
                      f"{ff.get('loocv_r2', float('nan')):.3f} | "
                      f"{ff.get('spearman', float('nan')):.3f} | "
+                     f"{fs.get('n', 0)} | "
                      f"{fs.get('r2', float('nan')):.3f} |\n")
     with open(ROOT / "results/exploratory/window_sweep.md", "w") as f:
         f.write("".join(L))

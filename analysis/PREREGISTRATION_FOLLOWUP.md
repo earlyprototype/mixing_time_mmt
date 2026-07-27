@@ -41,10 +41,12 @@ spread should again see echo-density texture rather than kernel texture.
    smooth semantics, nan tolerant), scaling the original 200-for-50
    ratio.
 3. Detection (floor-free): locate the profile minimum over finite
-   samples after the direct sound; threshold = tail mean minus 2 times
-   tail SD over the last 10 percent; detected sample = first crossing at
-   or after the argmin. k = 2 is retained from the 2011 Criterion III,
-   deliberately unchanged.
+   samples AT OR AFTER THE ONSET, where the onset is defined (Amendment
+   1) as the first sample whose absolute RIR amplitude reaches 5 percent
+   of the RIR's peak absolute amplitude; threshold = tail mean minus 2
+   times tail SD over the last 10 percent; detected sample = first
+   crossing at or after the argmin. k = 2 is retained from the 2011
+   Criterion III, deliberately unchanged.
 4. Window grid, all reported, none selected post hoc: W in {50, 75,
    100, 150, 200, 300, 500, 750, 1000, 1500, 2000}.
 5. W* (the single confirmatory window for H2) is fixed by PROCEDURE,
@@ -81,6 +83,28 @@ spread should again see echo-density texture rather than kernel texture.
   amended analysis, not a revision of this one.
 - ISM-based results (including the groundwork) are hypothesis
   generation only and can never confirm H2.
+
+## Amendment 1 (2026-07-27, logged before any H2 data exists)
+
+Triggered by external code review noting two gaps; recorded here per the
+honesty rules. No measured labeled data has been seen.
+
+1. Onset definition. The original text said the floor-free minimum is
+   taken "after the direct sound" without operationalizing it, and the
+   first groundwork run took the argmin over the whole profile (some
+   detections landed at sample 1). Fixed definition: the onset is the
+   first sample whose absolute RIR amplitude reaches 5 percent of the
+   RIR's peak absolute amplitude, and the argmin is restricted to
+   profile samples at or after that index. The groundwork sweep is
+   re-run under this rule and W* re-frozen from the re-run; both the
+   original (unguarded) and amended outputs remain in git history.
+2. Metric mismatch, clarified not changed: W* is deliberately frozen on
+   OLS R squared, as a plateau-location point estimate over the grid,
+   while H2's confirmatory metric remains LOOCV R squared. Freezing the
+   window on one metric and confirming on another avoids selecting the
+   window that happens to maximize the confirmatory statistic, which
+   would reintroduce the in-sample selection this project exists to
+   avoid.
 
 ## Groundwork permitted before measured data (runs after this commit)
 

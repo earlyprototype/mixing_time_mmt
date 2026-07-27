@@ -2,6 +2,12 @@
  "note": "H1 feasibility only; no perceptual labels exist for this corpus, H2 not testable here.",
  "corpus": "IoSR RealRoomBRIRs Rooms A to D, 48 kHz, frontal azimuth, left ear",
  "provenance": "https://raw.githubusercontent.com/IoSR-Surrey/RealRoomBRIRs/master/",
+ "sha256": {
+  "UniS_Room_A_BRIR_48k.sofa": "b956556239b79a47961ad0d2dac39147eaf2081abb530162b16eb186bae36547",
+  "UniS_Room_B_BRIR_48k.sofa": "f42eea9f6043dd887e02596ff201879886d67f403f4946b7bf72bdb1fec079f4",
+  "UniS_Room_C_BRIR_48k.sofa": "a8c6787a09d84ef7eb3071a9d26d50fd29b53326f320165ef9c30c2fbfee8c59",
+  "UniS_Room_D_BRIR_48k.sofa": "51f3791957a5ded4cfaca730f42e9a3d9a72441e3641147b5d896e0b41e855f8"
+ },
  "windows": [
   50,
   75,

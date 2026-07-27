@@ -7,7 +7,8 @@ that convolves the geometrically-exact Allen-Berkley spike train with
 such a kernel should reproduce the early sparsity seen in measured
 BRIRs, and with it the profile rise the 2011 feature needs.
 
-Kernel: impulse response of a 4th order Butterworth bandpass, 100 Hz to
+Kernel: impulse response of a Butterworth bandpass (4th order lowpass
+prototype, 8th order realized bandpass transfer function), 100 Hz to
 16 kHz at fs = 44100, truncated at 3 ms. Causal and minimum-phase-like
 by construction (IIR impulse response), front-loaded energy. It replaces
 the thesis's butter(3, 0.01) highpass (its 100 Hz corner subsumes it).
@@ -78,8 +79,18 @@ def ols_stats(x, y):
             float(spearmanr(x, y)[0]))
 
 
-def detect_floorfree(sm, k=2.0):
+def onset_index(rir, frac=0.05):
+    """Amendment 1 onset: first sample at 5 percent of peak |amplitude|."""
+    a = np.abs(np.asarray(rir, float))
+    return int(np.argmax(a >= frac * a.max()))
+
+
+def detect_floorfree(sm, rir, k=2.0):
+    onset = onset_index(rir)
     finite = np.isfinite(sm)
+    finite[:onset] = False
+    if finite.sum() < 100:
+        return None
     idx = np.arange(sm.size)[finite]
     amin = idx[np.argmin(sm[finite])]
     return detect_crossing(sm, k, tail_frac=0.1, start=int(amin) + 1)
@@ -88,12 +99,13 @@ def detect_floorfree(sm, k=2.0):
 def main():
     kernel, width_90 = make_kernel()
     gt = json.loads((ROOT / "inputs/ground_truth.json").read_text())
-    y = np.array([r["tmp50_samples_reconciled"] for r in gt["rooms"]
-                  if r["room"] in ROOMS], float)
+    by_room = {r["room"]: r["tmp50_samples_reconciled"]
+               for r in gt["rooms"]}
+    y = np.array([by_room[n] for n in ROOMS], float)
 
     out = {"note": "EXPLORATORY third rendering track: AB spikes + "
                    "causal measurement-like kernel.",
-           "kernel": {"type": "butter4 bandpass impulse response",
+           "kernel": {"type": "butterworth bandpass impulse response, 4th order prototype, 8th order realized",
                       "band_hz": KERNEL_BAND,
                       "trunc_ms": 1000.0 * KERNEL_LEN / FS,
                       "width90_samples": width_90,
@@ -107,7 +119,7 @@ def main():
         room = get_room(n)
         g = ab_rir(room, fs=FS)
         sparse = g["sparse_rir"]
-        rir = np.convolve(sparse, kernel)[: sparse.size]
+        rir = np.convolve(sparse, kernel)  # full, keeps causal tails
         if n == 1:
             room1_rirs = {"sparse": sparse, "kernel_track": rir}
         prof = hfd_profile(rir, window=50, kmax=5)
@@ -126,7 +138,7 @@ def main():
             c = detect_crossing(sm, k, tail_frac=0.1, start=1000)
             entry["crossings_fixedstart"][crit] = c
             crossings[crit].append(c)
-        ff = detect_floorfree(sm)
+        ff = detect_floorfree(sm, rir)
         entry["crossing_k2_floorfree"] = ff
         crossings_ff.append(ff)
         out["rooms"][n] = entry

@@ -16,6 +16,7 @@ preference. Files are fetched by fetch() if absent (they are not
 committed, about 150 MB total; provenance URLs recorded).
 """
 
+import hashlib
 import json
 import pathlib
 import subprocess
@@ -44,19 +45,40 @@ RISE_THRESHOLD = 3.0
 
 
 def fetch():
+    """Atomic download: curl -f fails on HTTP errors, temp file renamed
+    only on success, so an interrupted or 404 response can never poison
+    the cache."""
     DATA.mkdir(parents=True, exist_ok=True)
     for name in FILES.values():
         p = DATA / name
-        if not p.exists():
-            subprocess.run(["curl", "-s", "--max-time", "300", "-o",
-                            str(p), BASE + name], check=True)
+        if p.exists():
+            continue
+        tmp = p.with_suffix(p.suffix + ".part")
+        subprocess.run(["curl", "-fsSL", "--max-time", "300", "-o",
+                        str(tmp), BASE + name], check=True)
+        tmp.replace(p)
 
 
-def frontal_left(path):
-    """Left-ear IR at the frontal source azimuth (0 degrees)."""
+def sha256(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def frontal_left(path, tolerance_deg=5.0):
+    """Left-ear IR at the frontal source azimuth (0 degrees). Asserts
+    the nearest available azimuth is within tolerance_deg so an off-axis
+    IR can never silently stand in for frontal."""
     with h5py.File(path, "r") as f:
         az = f["SourcePosition"][:][:, 0] % 360.0
-        idx = int(np.argmin(np.minimum(az, 360.0 - az)))
+        dist = np.minimum(az, 360.0 - az)
+        idx = int(np.argmin(dist))
+        if dist[idx] > tolerance_deg:
+            raise ValueError(
+                f"no frontal measurement within {tolerance_deg} deg in "
+                f"{path} (nearest {dist[idx]:.1f} deg)")
         ir = f["Data.IR"][idx, 0, :].astype(np.float64)
         fs = float(f["Data.SamplingRate"][:][0])
     return ir, fs, float(az[idx])
@@ -68,7 +90,10 @@ def main():
                    "this corpus, H2 not testable here.",
            "corpus": "IoSR RealRoomBRIRs Rooms A to D, 48 kHz, frontal "
                      "azimuth, left ear",
-           "provenance": BASE, "windows": WINDOWS,
+           "provenance": BASE,
+           "sha256": {name: sha256(DATA / name)
+                      for name in FILES.values()},
+           "windows": WINDOWS,
            "rise_threshold": RISE_THRESHOLD, "rooms": {}}
     profiles_for_plot = {}
     for room, name in FILES.items():
@@ -116,6 +141,8 @@ def main():
     fig.suptitle("Smoothed HFD profiles of measured BRIRs "
                  "(H1 feasibility, exploratory)")
     fig.tight_layout()
+    (ROOT / "results/figures/exploratory").mkdir(parents=True,
+                                                 exist_ok=True)
     fig.savefig(ROOT / "results/figures/exploratory/"
                        "measured_feasibility.png", dpi=130)
 

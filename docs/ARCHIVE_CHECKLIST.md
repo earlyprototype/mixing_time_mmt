@@ -8,7 +8,7 @@ missing information is in the artifacts below, not in the document.
 
 ## 1. Saved RIRs: the jackpot
 
-Files like room1.mat, rir*.mat, *.wav, or workspace .mat dumps
+Files like `room1.mat`, `rir*.mat`, `*.wav`, or workspace `.mat` dumps
 containing the eight ISM outputs.
 
 Resolves EVERYTHING at once: push them through the rebuilt pipeline

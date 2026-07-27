@@ -3,4 +3,4 @@ __pycache__/
 .pytest_cache/
 data/rirs/*.npy
 data/profiles/*.npy
-data/measured/*.sofa
+data/measured/
