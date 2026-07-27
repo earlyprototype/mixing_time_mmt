@@ -97,3 +97,59 @@ the fourth decimal everywhere; integer crossings never reproduced; beta
 = sqrt(1 - alpha) confirmed in all rooms; best-fit lengths 0.55 to 0.85
 of RT*fs. Synthesis in results/reverse/SYNTHESIS.md, folded into
 REPORT.md.
+
+## Round 6 (follow-up groundwork, after PR #1 merged)
+
+Branch restarted from merged main. Committed BEFORE any groundwork ran:
+analysis/PREREGISTRATION_FOLLOWUP.md (window-scale follow-up, frozen W*
+procedure, floor-free detection, LOOCV primary) and
+docs/ARCHIVE_CHECKLIST.md (ranked list for the author's archive hunt).
+
+Window sweep on ISM data (hypothesis-generating): W* procedure returned
+None. No window rescues the pyroomacoustics track under floor-free
+detection (LOOCV deeply negative everywhere); the AB track degrades sharply above W=50 and stays near zero; the earlier W=100 74.7 percent point was a
+fixed-start floor artifact. results/exploratory/window_sweep.md.
+
+Measured-BRIR feasibility (IoSR RealRoomBRIRs, Rooms A to D, 48 kHz,
+fetched via raw.githubusercontent, not committed, provenance recorded):
+H1 PASSES at every window in all four rooms, rises 12 to 194 times the
+tail SD. Real measured rooms have true pre-arrival silence and sparse
+strong early reflections, so their profiles rise like the AB track, not
+like the dense-from-t0 pyroomacoustics synthesis. The instrument
+deflects on real data; whether it points at perceptual mixing time is
+exactly what H2 (labeled data) must decide.
+results/exploratory/measured_feasibility.md.
+
+## Round 7 (kernel track, author-suggested)
+
+analysis/exploratory/kernel_track.py: third rendering, AB spike train
+convolved with a causal measurement-like bandpass pulse (100 Hz to 16
+kHz, 90 percent of energy within 0.09 ms), replacing both the bare
+spikes and the ideal sinc. Result: the profile RISE survives in all
+eight rooms (12.8 to 24.3 times the tail SD), confirming the texture
+reasoning, but the TIMING information at window 50 does not: crossings
+compress to 852 to 2803 samples, the floor-free detections are nearly
+constant (852 for five rooms), and the honest floor-free regression is
+useless (R2 0.39 with LOOCV -0.94 and negative Spearman). The
+fixed-start numbers (R2 0.68) are partially floor-inflated again. Even
+a 0.09 ms kernel is enough to accelerate window filling and destroy
+most of the room-dependence the 51-sample feature reads from bare
+spikes. results/exploratory/kernel_track.md.
+
+## Round 8 (CodeRabbit review of PR 2, amended reruns)
+
+Review round on the phase 2 PR: 8 actionable comments, all addressed.
+Substantive: the pre-registration's "after the direct sound" onset was
+under-specified and unimplemented (some floor-free detections landed at
+sample 1), fixed by Amendment 1 (onset = first sample at 5 percent of
+peak absolute amplitude, argmin restricted to at or after onset) and
+all three groundwork scripts re-run under the amended rule. Verdicts
+unchanged: W* still None, H1 still passes 4 of 4 rooms at every window,
+and the kernel track's floor-free result is starker (rooms 1 to 3
+detect nothing, rooms 4 to 8 detect the identical sample 852, zero
+between-room information). Also fixed: kernel order labeling (4th order
+prototype, 8th order realized), full convolution tail retained, atomic
+checksummed downloads, figures directory creation, frontal azimuth
+tolerance assert, order-independent ground truth lookup, per-cell n
+columns in the sweep table, W* metric choice justified in the
+amendment, markdown and gitignore nits.
