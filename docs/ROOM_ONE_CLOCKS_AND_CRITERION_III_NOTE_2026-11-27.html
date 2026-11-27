@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
+<title>Room 1 clocks</title>
+<style>:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --ink:#171A21; --ink-2:#525A6B; --rule:#D8DCE4; --rule-2:#E9ECF2;
+  --accent:#1F4FD8; --accent-soft:#E6ECFB;
+  --est:#146C5B; --est-bg:#E1F1EB; --inf:#8A5300; --inf-bg:#F6ECD9; --spec:#5C43A8; --spec-bg:#ECE7F8;
+  --rec:#8F3A5B; --rec-bg:#F7E4EC;
+  --fig-1:#1F4FD8; --fig-2:#CBD3E2; --fig-3:#D9A441;
+  --code-bg:#EEF1F6;
+  color-scheme:light;
+
+  --font-display:'Newsreader',Georgia,'Times New Roman',serif;
+  --font-body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--font-body);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.page{max-width:1120px;margin:0 auto;padding:44px 24px 80px;display:grid;grid-template-columns:200px minmax(0,46rem);column-gap:56px;row-gap:0}
+.mast{grid-column:1/-1;border-bottom:1px solid var(--rule);padding-bottom:28px;margin-bottom:36px}
+.eyebrow{font:600 12px/1.4 var(--font-body);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin:0 0 14px;display:flex;flex-wrap:wrap;gap:8px 18px}
+.eyebrow span+span::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--ink-2);margin:0 10px 3px 0;vertical-align:middle}
+h1{font:600 clamp(30px,4.2vw,44px)/1.12 var(--font-display);letter-spacing:-.01em;margin:0 0 18px;max-width:22ch;text-wrap:balance}
+.stand{font:400 clamp(18px,1.6vw,20px)/1.5 var(--font-display);font-style:italic;color:var(--ink-2);max-width:60ch;margin:0}
+.stand a{color:inherit}
+.prov{margin:24px 0 0;max-width:60ch;font-size:14.5px;line-height:1.55;color:var(--ink-2);border-top:1px solid var(--rule-2);padding-top:14px}
+.prov .lbl{display:block;font:600 11px/1 var(--font-body);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin-bottom:8px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-top:12px;font-size:14px;color:var(--ink-2)}
+nav.toc{position:sticky;top:28px;align-self:start;font-size:14px;line-height:1.45}
+nav.toc .lbl{font:600 11px/1 var(--font-body);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin:0 0 12px}
+nav.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+nav.toc li{display:grid;grid-template-columns:20px 1fr;gap:6px;color:var(--ink-2)}
+nav.toc li .n{font-variant-numeric:tabular-nums;font-weight:600;color:var(--accent)}
+nav.toc a{color:var(--ink);text-decoration:none}
+nav.toc a:hover{text-decoration:underline}
+.prose>p,.prose>ul,.prose>ol,.prose>h2,.prose>h3,.prose>.brief,.prose>blockquote{max-width:34rem}
+.prose h2{font:600 clamp(24px,2.4vw,29px)/1.2 var(--font-display);letter-spacing:-.005em;margin:52px 0 16px;padding-top:20px;border-top:1px solid var(--rule);text-wrap:balance}
+.prose h2:first-of-type{margin-top:0;border-top:0;padding-top:0}
+.prose h3{font:600 19px/1.3 var(--font-body);margin:34px 0 10px;text-wrap:balance}
+.prose p{margin:0 0 16px}
+.prose ul,.prose ol{margin:0 0 18px;padding-left:1.4em;display:flex;flex-direction:column;gap:9px}
+.prose li>p{margin:0}
+.prose strong{font-weight:600}
+.prose blockquote{margin:0 0 18px;padding:2px 0 2px 18px;border-left:2px solid var(--rule);color:var(--ink-2)}
+.prose hr{border:0;border-top:1px solid var(--rule-2);margin:28px 0}
+.brief{display:flex;flex-direction:column;gap:14px;margin-bottom:8px}
+.brief p{margin:0;padding-left:18px;border-left:2px solid var(--accent)}
+.brief p>strong:first-child{font:600 19px/1.35 var(--font-display);display:inline;margin-right:.3em;color:var(--ink)}
+code{font:0.86em var(--font-mono);background:var(--code-bg);padding:.08em .35em;border-radius:3px}
+pre{background:var(--code-bg);border:1px solid var(--rule-2);border-radius:4px;padding:14px 16px;overflow-x:auto;margin:0 0 20px;max-width:34rem}
+pre code{background:none;padding:0;font-size:13.5px;line-height:1.55}
+.mark{display:inline-block;font:600 10.5px/1 var(--font-body);letter-spacing:.07em;text-transform:uppercase;padding:4px 6px 3px;border-radius:3px;vertical-align:baseline;position:relative;top:-1px;white-space:nowrap}
+.mark.est{color:var(--est);background:var(--est-bg)}
+.mark.inf{color:var(--inf);background:var(--inf-bg)}
+.mark.spec{color:var(--spec);background:var(--spec-bg)}
+.mark.rec{color:var(--rec);background:var(--rec-bg)}
+.table-scroll{overflow-x:auto;margin:6px 0 22px;border:1px solid var(--rule);border-radius:4px;background:var(--surface)}
+table{border-collapse:collapse;font-size:14px;line-height:1.4;font-variant-numeric:tabular-nums;width:max-content;min-width:100%}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule-2)}
+th{font:600 11.5px/1.3 var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);background:var(--bg);position:sticky;top:0}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{min-width:9rem;max-width:24rem}
+.prose figure{margin:8px 0 24px;padding:18px 18px 12px;background:var(--surface);border:1px solid var(--rule);border-radius:4px;max-width:46rem}
+.prose figure svg{width:100%;height:auto;display:block}
+.svg-lbl{font:12px var(--font-body);fill:var(--ink-2)}
+.svg-num{font:11.5px var(--font-mono);fill:var(--ink-2)}
+.svg-tick{stroke:var(--ink-2);stroke-width:1}
+.svg-cell{stroke:var(--surface);stroke-width:2}
+figcaption{font-size:14px;line-height:1.5;color:var(--ink-2);margin-top:10px;max-width:60ch}
+.foot{grid-column:2;margin-top:48px;padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--ink-2)}
+@media (max-width:860px){
+  .page{grid-template-columns:minmax(0,1fr);padding:28px 18px 64px}
+  nav.toc{position:static;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--rule-2)}
+  .foot{grid-column:1}
+}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="mast">
+<p class="eyebrow"><span>Reading note</span><span>2026-11-27</span><span>Written for the General</span><span>mixing_time_mmt</span></p>
+<h1>Room 1's two clocks and the missing share of the Criterion III fit</h1>
+<p class="stand"><em>Written on 27 November 2026 for the General, this note sits beside the repository's replication report. What did Pathfinder Scarab's “two clocks” measure in the studio known as Room 1? How much of the thesis's agreement with listeners survives when the room responses are rebuilt? Those questions determine what to look for in the author's archive.</em></p>
+<div class="prov"><span class="lbl">Provenance</span>On 2026-11-27 I read Scarab's 2026-11-26 field report, Conaty's thesis tables and printed simulation code, the two reconstruction routines and the saved room results at repository revision <code>fec6cee</code>. I computed the first arrival twice in memory for Room 1, measured the first visible peak on the published plot, and refitted straight lines to the stored room values. The listener observations and full-room simulations came from earlier work. I checked recalled details against the sources below. [established] marks a source or check named here, [inferred] a conclusion drawn from it, and [speculation] a possible explanation still to test.</div>
+</header>
+<nav class="toc" aria-label="Sections"><p class="lbl">Sections</p><ol><li><span class="n">1</span><a href="#1-the-answers-in-brief">The answers in brief</a></li><li><span class="n">2</span><a href="#2-where-the-85-samples-come-from">Where the 85 samples come from</a></li><li><span class="n">3</span><a href="#3-what-the-eight-room-fit-measures">What the eight-room fit measures</a></li><li><span class="n">4</span><a href="#4-what-remains-and-what-needs-the-operators-decision">What remains, and what needs the operator's decision</a></li><li><span class="n"></span><a href="#sources">Sources</a></li></ol></nav>
+<main class="prose"><h2 id="1-the-answers-in-brief">1. The answers in brief</h2><div class="brief">
+<p><strong>The same one-metre path takes 129 samples under the reconstruction's air-speed setting and 44 under the printed interface's metre conversion.</strong> [<span class="mark est">established</span>] At 44,100 samples per second, the 85-sample difference puts the first sound about 1.93 milliseconds earlier. [<span class="mark est">established</span>] The thesis plot favours the later arrival, but the original Room 1 settings are still unknown. [<span class="mark inf">inferred</span>]</p>
+<p><strong>The published detections recover the thesis's 93.49% fit to listening times across eight rooms.</strong> [<span class="mark est">established</span>] With the same listening times, the rebuilt detections explain 47.22% of the variation for pyroomacoustics and 57.11% for Allen-Berkley, shortfalls of <strong>46.27 and 36.38 percentage points</strong>, respectively. [<span class="mark est">established</span>] A timing difference in one room cannot tell us how much of either shortfall it caused. [<span class="mark inf">inferred</span>]</p>
+</div><h2 id="2-where-the-85-samples-come-from">2. Where the 85 samples come from</h2>
+<p>Room 1 is E. Studio. The thesis puts the sound source and microphone at the same height and the same position along the room's length, respectively two metres and one metre from the same side wall. [<span class="mark est">established</span>] The first sound travels the one metre between them before any wall reflection arrives. [<span class="mark est">established</span>]</p>
+<p>Both “clocks” count 44,100 samples, or equally spaced sound values, per second from emission. They differ in the time allowed for sound to travel one metre. [<span class="mark est">established</span>] The Allen-Berkley reconstruction converts distance to samples by multiplying metres by 44,100 and dividing by 343, its assumed speed of sound in metres per second. [<span class="mark est">established</span>] The printed MATLAB interface multiplies distance by the sample rate and a unit factor, then divides by 1,000. With the factor set to one and distances entered in metres, that amounts to 1,000 metres per second. [<span class="mark est">established</span>]</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Conversion for the one-metre path</th>
+<th style="text-align: right;">Delay before rounding, in samples</th>
+<th style="text-align: right;">First nonzero sample, counted from zero at emission</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allen-Berkley default</td>
+<td style="text-align: right;">44,100 / 343 = 128.57</td>
+<td style="text-align: right;">129 (2.93 milliseconds) [<span class="mark est">established</span>]</td>
+</tr>
+<tr>
+<td>Printed interface, assuming metres and factor one</td>
+<td style="text-align: right;">44,100 / 1,000 = 44.10</td>
+<td style="text-align: right;">44 (1.00 millisecond) [<span class="mark est">established</span>]</td>
+</tr>
+</tbody>
+</table></div>
+<p>I changed only the speed argument in the same Allen-Berkley routine and inspected the first nonzero value in each short response. [<span class="mark est">established</span>] Subtracting the rounded delays gives 129 minus 44, or 85 samples. The printed MATLAB code adds one to store each delay because its arrays start at one, so the matching storage positions would be 130 and 45. [<span class="mark est">established</span>]</p>
+<p>Figure 5.1a, the example setup screen, shows “metres”. [<span class="mark est">established</span>] In Figure 5.1b, the Room 1 response beneath it, the first tall peak sits about 20 pixels along a 1,274-pixel axis spanning 200 milliseconds. That puts it about 3.1 milliseconds after zero, closer to 2.93 than to 1.00 milliseconds. [<span class="mark est">established</span>] The drawing supports the later arrival to the precision of the plot. Which interface settings produced the results table is still open. [<span class="mark inf">inferred</span>]</p>
+<h2 id="3-what-the-eight-room-fit-measures">3. What the eight-room fit measures</h2>
+<p>Conaty's 2011 Trinity College Dublin thesis fitted eight of Lindau's nine rooms. The ninth, a church, fell outside the rectangular room model. [<span class="mark est">established</span>] Each room supplied a listening time, the time after which listeners had difficulty distinguishing a change to the direction of the late echoes, and a detection time calculated from a simulated echo trace. [<span class="mark est">established</span>]</p>
+<p>Criterion III is the thesis's third detection rule. It scans a smoothed Higuchi fractal dimension profile, a running estimate of how rough the echo trace is, starting at sample 1,000 (about 22.7 milliseconds from the start). [<span class="mark est">established</span>] It records the first sample at or above the average roughness of the final tenth of the profile minus twice that portion's standard deviation, a measure of its spread. [<span class="mark est">established</span>] In Room 1 this happens well after the first sound under all three sets of detections. [<span class="mark est">established</span>]</p>
+<p>For each row below I fitted a straight line from detection time to listening time, allowing the line to cross the vertical axis above or below zero. The score, R², measures the share of variation in the eight listening times explained by that line. Predicting their mean for every room scores 0%, and matching every room exactly scores 100%. [<span class="mark est">established</span>]</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Source of detection times</th>
+<th style="text-align: right;">Room 1 detection (sample number, counting from one)</th>
+<th style="text-align: right;">R² across the same eight rooms</th>
+<th style="text-align: right;">Shortfall from the printed 93.49%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thesis Table 6.1b, the published crossing times</td>
+<td style="text-align: right;">3,136</td>
+<td style="text-align: right;">93.49%</td>
+<td style="text-align: right;">0.00 percentage points [<span class="mark est">established</span>]</td>
+</tr>
+<tr>
+<td>pyroomacoustics, which spreads each modelled arrival across nearby samples</td>
+<td style="text-align: right;">1,070</td>
+<td style="text-align: right;">47.22%</td>
+<td style="text-align: right;">46.27 percentage points [<span class="mark est">established</span>]</td>
+</tr>
+<tr>
+<td>Allen-Berkley, which places each arrival on a whole sample before filtering</td>
+<td style="text-align: right;">4,032</td>
+<td style="text-align: right;">57.11%</td>
+<td style="text-align: right;">36.38 percentage points [<span class="mark est">established</span>]</td>
+</tr>
+</tbody>
+</table></div>
+<p>Table 6.2, the thesis's summary of the fitted lines, gives 93.49% for the third rule. The listening times used in that table survive as plotted points in Figure 6.2. [<span class="mark est">established</span>] The repository read their heights from the figure, then adjusted them slightly to agree with the printed fits. Using the unadjusted heights with the published detections gives 93.52%, against 93.49% after adjustment. [<span class="mark est">established</span>] The close agreement checks the transcription. [<span class="mark inf">inferred</span>] When the repository withheld each room in turn and predicted its listening time from the other seven, the scores fell to 3.52% for pyroomacoustics and 23.28% for Allen-Berkley, against the same eight-room mean. [<span class="mark est">established</span>]</p>
+<p>The printed line adds 0.3197 samples of listening time for each extra sample of detection time, starting from 325 samples at a detection time of zero. [<span class="mark est">established</span>] Its slope resembles 0.343, the ratio of the two assumed speeds, but a slope alone cannot identify a speed setting. Adding the same delay to every detection shifts where the fitted line crosses the vertical axis. Multiplying every detection by the same positive factor changes the slope. In either case each room keeps the same fitted listening time and the same share of variation is explained. [<span class="mark est">established</span>]</p>
+<p>Changing the simulated speed also moves the echoes relative to the fixed span of samples used to measure roughness. That can change which echo first crosses the threshold in each room. [<span class="mark inf">inferred</span>] This could account for part of the shortfall. [<span class="mark spec">speculation</span>]</p>
+<h2 id="4-what-remains-and-what-needs-the-operators-decision">4. What remains, and what needs the operator's decision</h2>
+<p><strong>What happened.</strong> The Room 1 check reproduced Scarab's first arrivals. The eight-room check recovered the printed score only when it used the thesis's detections. [<span class="mark est">established</span>]</p>
+<p><strong>What it means.</strong> The unit conversion gives us a specific setting to investigate. The aggregate scores alone cannot identify what the author ran. [<span class="mark inf">inferred</span>]</p>
+<p><strong>What remains.</strong> The following costs describe the proposed work in archive searches and model runs.</p>
+<ol>
+<li>Search the author's archive once for the saved Room 1 waveform, the settings used to generate it and the original plotted data. The appendix already contains <code>sroomguicbs.m</code>, the interface routine that applies the unit conversion. [<span class="mark est">established</span>] A saved response with a known time origin and the copy of the routine used that day would let us check both the first arrival and the later detection against the published record. [<span class="mark inf">inferred</span>]</li>
+<li>If authorised, run one additional Allen-Berkley reconstruction for each of the eight fitted rooms using the printed metre conversion. Hold the geometry, response length and detection rule fixed. Compare first arrivals, crossings and the eight-room fit against the existing reconstruction and the published values. [<span class="mark inf">inferred</span>]</li>
+</ol>
+<p><strong>What needs the operator's decision.</strong> Close the replication with the discrepancy recorded, or authorise the archive search and the eight-room comparison. I recommend the archive search first. Even if a new simulation matches the printed score, only a contemporary record can tie that setting to the original run. [<span class="mark inf">inferred</span>]</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Pathfinder Scarab, <em>DrJones Recon Brief for earlyprototype/mixing_time_mmt</em>, field report of 26 November 2026, “Test the thesis GUI’s delay conversion as a separate reconstruction”.</li>
+<li>Thom Conaty, <em>The Fractal Dimension of Room Impulse Responses as a Predictor for the Perceptual Mixing Time</em>, Trinity College Dublin, 2011. Printed pp. 32, 38 to 46, 53, 57 to 58 and 70 cover the listening task, room setup, detection rule, results, integer delays and interface conversion. <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/inputs/FINAL_thom_conaty.pdf">Thesis</a> · <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/inputs/figures/page51.png">Room 1 figures</a> · <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/inputs/figures/page57.png">Regression figure and table</a></li>
+<li>Implementation and stored inputs. <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/src/mixtime/ab_ism.py">Allen-Berkley simulator</a> · <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/src/mixtime/ism.py">pyroomacoustics simulator</a> · <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/inputs/ground_truth.json">Recovered listening times and tabulated crossings</a> · <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/results/rooms/room1.json">Room 1 detections</a> · <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/results/analysis.json">Eight-room detection vectors</a> · <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/analysis/analyze.py">Fit calculation</a></li>
+<li>Findings and archive leads. <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/REPORT.md">Replication report</a> · <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/results/summary.md">All eight rooms' fitted results</a> · <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/docs/DeepReviewReport.md">Thesis review</a> · <a href="https://github.com/earlyprototype/mixing_time_mmt/blob/fec6ceeb0870c4b815b0068783f0dee90d450166/docs/ARCHIVE_CHECKLIST.md">Archive checklist</a></li>
+</ul></main>
+<footer class="foot"><a href="ROOM_ONE_CLOCKS_AND_CRITERION_III_NOTE_2026-11-27.md">Read the Markdown source.</a></footer>
+</div>
+</body>
+</html>
